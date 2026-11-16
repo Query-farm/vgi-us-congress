@@ -64,7 +64,7 @@ are `TIMESTAMPTZ`, identifiers stay `VARCHAR`.
 
 ## Quick start
 
-**Prerequisites:** Python 3.13+ and [uv](https://docs.astral.sh/uv/).
+**Prerequisites:** Python 3.14+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 git clone https://github.com/Query-farm/vgi-us-congress && cd vgi-us-congress

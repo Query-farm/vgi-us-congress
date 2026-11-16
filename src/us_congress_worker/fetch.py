@@ -166,7 +166,7 @@ def read_meta(path: Path) -> dict[str, Any]:
     try:
         data = json.loads(_meta_path(path).read_text())
         return data if isinstance(data, dict) else {}
-    except (OSError, ValueError):
+    except OSError, ValueError:
         return {}
 
 
