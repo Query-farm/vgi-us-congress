@@ -31,7 +31,7 @@ from dataclasses import dataclass
 from typing import Annotated, Any, ClassVar, TypeVar
 
 import pyarrow as pa
-from vgi.arguments import Arg
+from vgi.arguments import Arg, Secret
 from vgi.catalog import SecretTypeSpec
 from vgi.invocation import BindResponse
 from vgi.metadata import FunctionExample
@@ -201,8 +201,13 @@ class CongressGovSource(TableFunctionGenerator[A, PageCursor]):
     PAGED: ClassVar[bool] = True
 
     @classmethod
-    def on_bind(cls, params: BindParams[A]) -> BindResponse:
-        """Declare the output schema (the secret is requested through ``Meta.required_secrets``)."""
+    def on_bind(
+        cls,
+        params: BindParams[A],
+        *,
+        api_key: Annotated[dict[str, Any] | None, Secret(SECRET_TYPE)] = None,
+    ) -> BindResponse:
+        """Declare the output schema; the annotation requests the API-key secret for every subclass."""
         return BindResponse(output_schema=cls.FIXED_SCHEMA)
 
     @classmethod
@@ -389,7 +394,6 @@ class Bills(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "bills"
-        required_secrets = [SECRET_TYPE]
         description = (
             "List bills and resolutions from Congress.gov, newest update first, with filters pushed into the API"
         )
@@ -504,7 +508,6 @@ class Bill(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "bill"
-        required_secrets = [SECRET_TYPE]
         description = "One bill's sponsor, policy area, status and counts from Congress.gov"
         tags = function_tags(
             title="Bill Detail (Congress.gov)",
@@ -649,7 +652,6 @@ class BillActions(_BillChild):
         """Function metadata."""
 
         name = "bill_actions"
-        required_secrets = [SECRET_TYPE]
         description = "Every recorded action on one bill, newest first, with links to roll-call votes"
         tags = _bill_child_tags(
             "Bill Actions (Congress.gov)",
@@ -730,7 +732,6 @@ class BillCosponsors(_BillChild):
         """Function metadata."""
 
         name = "bill_cosponsors"
-        required_secrets = [SECRET_TYPE]
         description = "The cosponsors of one bill with sign-on dates and bioguide IDs"
         tags = _bill_child_tags(
             "Bill Cosponsors (Congress.gov)",
@@ -807,7 +808,6 @@ class BillSubjects(_BillChild):
         """Function metadata."""
 
         name = "bill_subjects"
-        required_secrets = [SECRET_TYPE]
         description = "The CRS policy area and legislative subject terms of one bill"
         tags = _bill_child_tags(
             "Bill Subjects (Congress.gov)",
@@ -893,7 +893,6 @@ class BillSummaries(_BillChild):
         """Function metadata."""
 
         name = "bill_summaries"
-        required_secrets = [SECRET_TYPE]
         description = "The Congressional Research Service summaries of one bill, one per legislative stage"
         tags = _bill_child_tags(
             "Bill Summaries (Congress.gov)",
@@ -964,7 +963,6 @@ class BillTextVersions(_BillChild):
         """Function metadata."""
 
         name = "bill_text_versions"
-        required_secrets = [SECRET_TYPE]
         description = "The published text versions of one bill with links to HTML, PDF and XML"
         tags = _bill_child_tags(
             "Bill Text Versions (Congress.gov)",
@@ -1051,7 +1049,6 @@ class Laws(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "laws"
-        required_secrets = [SECRET_TYPE]
         description = "The public and private laws enacted by one Congress, with the bill each one came from"
         tags = function_tags(
             title="Laws (Congress.gov)",
@@ -1168,7 +1165,6 @@ class Amendments(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "amendments"
-        required_secrets = [SECRET_TYPE]
         description = "List House and Senate amendments from Congress.gov, with filters pushed into the API"
         filter_pushdown = True
         auto_apply_filters = True
@@ -1281,7 +1277,6 @@ class CongressGovMembers(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "congress_gov_members"
-        required_secrets = [SECRET_TYPE]
         description = "Members of Congress as listed by Congress.gov, by Congress, state and district, with portraits"
         tags = function_tags(
             title="Members (Congress.gov)",
@@ -1450,7 +1445,6 @@ class SponsoredLegislation(_MemberLegislation):
         """Function metadata."""
 
         name = "sponsored_legislation"
-        required_secrets = [SECRET_TYPE]
         description = "Every bill, resolution and amendment one member sponsored, from Congress.gov"
         tags = _member_leg_tags("sponsored")
         examples = [
@@ -1481,7 +1475,6 @@ class CosponsoredLegislation(_MemberLegislation):
         """Function metadata."""
 
         name = "cosponsored_legislation"
-        required_secrets = [SECRET_TYPE]
         description = "Every bill, resolution and amendment one member cosponsored, from Congress.gov"
         tags = _member_leg_tags("cosponsored")
         examples = [
@@ -1551,7 +1544,6 @@ class Committees(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "committees"
-        required_secrets = [SECRET_TYPE]
         description = "House, Senate and joint committees and subcommittees from Congress.gov"
         tags = function_tags(
             title="Committees (Congress.gov)",
@@ -1654,7 +1646,6 @@ class Nominations(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "nominations"
-        required_secrets = [SECRET_TYPE]
         description = "Presidential nominations sent to the Senate, with their latest action, from Congress.gov"
         filter_pushdown = True
         auto_apply_filters = True
@@ -1748,7 +1739,6 @@ class Treaties(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "treaties"
-        required_secrets = [SECRET_TYPE]
         description = "Treaties transmitted to the Senate for advice and consent, from Congress.gov"
         tags = function_tags(
             title="Treaties (Congress.gov)",
@@ -1851,7 +1841,6 @@ class HouseVotes(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "house_votes"
-        required_secrets = [SECRET_TYPE]
         description = "House roll-call votes on legislation from Congress.gov's beta vote API, 118th Congress on"
         tags = function_tags(
             title="House Votes (Congress.gov)",
@@ -1967,7 +1956,6 @@ class HouseVotePositions(CongressGovSource[Any]):
         """Function metadata."""
 
         name = "house_vote_positions"
-        required_secrets = [SECRET_TYPE]
         description = "How each representative voted on one House roll call, from Congress.gov's beta vote API"
         tags = function_tags(
             title="House Vote Positions (Congress.gov)",
