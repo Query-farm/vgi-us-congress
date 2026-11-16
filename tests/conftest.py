@@ -1,4 +1,4 @@
-"""Shared fixtures: a worker client and the local mock API."""
+"""Shared fixtures: a worker client and the local mock upstream."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 @pytest.fixture(scope="session")
 def client() -> Iterator[Client]:
     """A client that launches the worker as a subprocess, the way DuckDB does."""
-    with Client([sys.executable, "-m", "starter_worker.worker"]) as c:
+    with Client([sys.executable, "-m", "us_congress_worker.worker"]) as c:
         yield c
 
 

@@ -1,0 +1,10 @@
+congress,chamber,icpsr,state_icpsr,district_code,state_abbrev,party_code,occupancy,last_means,bioname,bioguide_id,born,died,nominate_dim1,nominate_dim2,nominate_log_likelihood,nominate_geo_mean_probability,nominate_number_of_votes,nominate_number_of_errors,conditional,nokken_poole_dim1,nokken_poole_dim2
+119,President,99912,99,0,USA,200,0,0,"TRUMP, Donald John",,1946.0,,0.403,0.162,,,,,,,
+119,House,15448,71,11,CA,100,,,"PELOSI, Nancy",P000197,1940.0,,-0.489,-0.174,-25.0312,0.95421,534,15,,-0.449,0.101
+119,House,14854,51,5,KY,200,,,"ROGERS, Harold Dallas (Hal)",R000395,1937.0,,0.334,0.157,-17.81105,0.96924,570,4,,0.401,0.916
+119,House,14873,52,5,MD,100,,,"HOYER, Steny Hamilton",H000874,1939.0,,-0.381,0.125,-40.88621,0.93031,566,16,,-0.379,0.247
+119,House,15433,52,7,MD,100,,,"MFUME, Kweisi",M000687,1948.0,,-0.441,-0.317,-23.26993,0.95872,552,13,,-0.39,-0.169
+119,House,14863,12,4,NJ,200,,,"SMITH, Christopher Henry",S000522,1953.0,,0.184,-0.169,-124.35376,0.80642,578,45,,0.354,-0.147
+119,House,21343,13,8,NY,100,,,"JEFFRIES, Hakeem",J000294,1970.0,,-0.483,-0.055,-21.38531,0.96355,576,11,,-0.476,0.16
+119,House,21949,13,14,NY,100,,,"OCASIO-CORTEZ, Alexandria",O000172,1989.0,,-0.333,-0.943,-19.37884,0.96634,566,7,,-0.468,-0.868
+119,House,15029,24,9,OH,100,,,"KAPTUR, Marcia Carolyn (Marcy)",K000009,1946.0,,-0.34,0.14,-127.40411,0.79456,554,46,,-0.184,0.116

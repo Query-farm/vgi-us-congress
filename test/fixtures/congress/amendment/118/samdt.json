@@ -1,0 +1,40 @@
+{
+ "amendments": [
+  {
+   "congress": 118,
+   "latestAction": {
+    "actionDate": "2024-03-08",
+    "text": "Amendment SA 1640 not agreed to in Senate by Yea-Nay Vote. 45 - 52. Record Vote Number: 72."
+   },
+   "number": "1640",
+   "purpose": "To strike a provision.",
+   "type": "SAMDT",
+   "updateDate": "2024-03-12T15:01:12Z",
+   "url": "https://api.congress.gov/v3/amendment/118/samdt/1640?format=json"
+  },
+  {
+   "congress": 118,
+   "latestAction": {
+    "actionDate": "2024-03-08",
+    "text": "Amendment SA 1630 not agreed to in Senate by Yea-Nay Vote. 42 - 55."
+   },
+   "number": "1630",
+   "purpose": "In the nature of a substitute.",
+   "type": "SAMDT",
+   "updateDate": "2024-03-11T10:00:00Z",
+   "url": "https://api.congress.gov/v3/amendment/118/samdt/1630?format=json"
+  },
+  {
+   "congress": 118,
+   "latestAction": {
+    "actionDate": "2024-02-13",
+    "text": "Amendment SA 1388 agreed to in Senate by Voice Vote."
+   },
+   "number": "1388",
+   "purpose": null,
+   "type": "SAMDT",
+   "updateDate": "2024-02-14T09:30:00Z",
+   "url": "https://api.congress.gov/v3/amendment/118/samdt/1388?format=json"
+  }
+ ]
+}

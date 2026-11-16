@@ -1,16 +1,82 @@
 # Private graders for the public vgi.agent_test_tasks in the worker's catalog metadata.
-# `vgi-lint lint --ai` runs an agent on each prompt and grades it with check_sql.
+# `vgi-lint lint --ai` runs an agent on each prompt and grades it.
 # See https://github.com/Query-farm/vgi-lint-check (VGI920).
+#
+# The member, Voteview and Senate relations read live upstream files that change as
+# Congress acts (new members, new votes, rescaled DW-NOMINATE scores), so those tasks
+# grade with check_sql invariants rather than an exact reference result.
+#
+# hr2882_profile and congress_118_output use the key-gated Congress.gov relations. They
+# pass only when the run has a key, e.g.
+#   vgi-lint lint --ai --setup-sql "CREATE SECRET (TYPE us_congress, API_KEY '...')"
+# Without one they fail; the other tasks keep the pass rate above the 0.8 gate.
 tasks:
-  - name: formal_greeting
-    reference_sql: SELECT starter.main.greet('Grace', 'formal') AS greeting
-  - name: sum_of_squares
-    reference_sql: SELECT sum(squared) AS total FROM starter.main.sequence_table(10)
-  - name: stepped_sequence
-    reference_sql: SELECT n FROM starter.main.sequence_table(4, step := 5) ORDER BY n
-  # Reads the public demo API (https://vgi-starter-api.query-farm.services/v1).
-  - name: items_per_category
+  # Robert Byrd (B001210) served longest in the Senate; no one else passes 18,500 days.
+  - name: longest_serving_senators
     check_sql: >-
-      SELECT count(*) = 3 AND sum(items) = 25
-      FROM (SELECT category, count(*) AS items
-            FROM starter.main.fetch_items('https://vgi-starter-api.query-farm.services/v1') GROUP BY category)
+      SELECT arg_max(bioguide_id, days) = 'B001210' AND count(*) > 1900
+      FROM (SELECT bioguide_id, sum(end_date - start_date) AS days FROM us_congress.main.member_terms
+            WHERE chamber = 'senate' GROUP BY bioguide_id)
+  # 132 women as of 2026-11; the count only grows during the Congress.
+  - name: women_in_119th_house
+    check_sql: >-
+      SELECT count(DISTINCT t.bioguide_id) BETWEEN 125 AND 160
+      FROM us_congress.main.member_terms t JOIN us_congress.main.members m USING (bioguide_id)
+      WHERE t.chamber = 'house' AND m.gender = 'F'
+        AND t.start_date < DATE '2027-01-03' AND t.end_date > DATE '2025-01-03'
+  # The 118th Congress is closed: 691 Senate roll calls in Voteview.
+  - name: senate_rollcalls_118
+    check_sql: >-
+      SELECT count(*) BETWEEN 680 AND 700 FROM us_congress.main.rollcalls(118, chamber := 'senate')
+  # The most conservative member exists and scores near the +1 end of the scale.
+  - name: most_conservative_house_119
+    check_sql: >-
+      SELECT max(nominate_dim1) BETWEEN 0.8 AND 1.0 AND count(bioguide_id) > 400
+      FROM us_congress.main.member_ideology(119, chamber := 'house')
+  # The 118th Congress is closed; Sanders missed a handful of its ~690 Senate roll calls.
+  - name: sanders_missed_votes_118
+    check_sql: >-
+      SELECT count(*) FILTER (WHERE vote = 'Not Voting') BETWEEN 1 AND 100 AND count(*) BETWEEN 680 AND 700
+      FROM us_congress.main.member_votes(118, chamber := 'senate') WHERE bioguide_id = 'S000033'
+  # 2025 is over: senate.gov lists 659 votes for session 1.
+  - name: senate_votes_2025
+    check_sql: SELECT count(*) = 659 FROM us_congress.main.senate_votes(119, 1)
+  # Vote 1 of 2025 (cloture on the motion to proceed to S. 5) was 84-9.
+  - name: first_senate_vote_2025_nays
+    check_sql: >-
+      SELECT count(*) FILTER (WHERE vote_cast = 'Nay') = 9 FROM us_congress.main.senate_vote_positions(119, 1, 1)
+  # Madison served four House terms for Virginia's 5th and 15th districts.
+  - name: madison_house_terms
+    check_sql: >-
+      SELECT count(*) = 4 AND list_sort(list(DISTINCT district)) = [5, 15]
+      FROM us_congress.main.member_terms WHERE bioguide_id = 'M000043' AND chamber = 'house'
+  # Local bookkeeping: the cache always reports non-negative sizes.
+  - name: cache_footprint
+    check_sql: SELECT count(*) FILTER (WHERE bytes < 0) = 0 FROM us_congress.main.cache_files
+  # Key-gated. H.R. 2882 (118th) became Public Law 118-47, sponsored by Rep. Ciscomani.
+  - name: hr2882_profile
+    check_sql: >-
+      SELECT (SELECT sponsor_bioguide_id = 'C001133' AND list_contains(law_numbers, '118-47')
+              FROM us_congress.main.bill(118, 'hr', 2882))
+         AND (SELECT count(*) > 0 FROM us_congress.main.bill_cosponsors(118, 'hr', 2882))
+         AND (SELECT count(*) > 0 FROM us_congress.main.bill_actions(118, 'hr', 2882))
+         AND (SELECT count(*) > 0 FROM us_congress.main.bill_subjects(118, 'hr', 2882))
+         AND (SELECT count(*) > 0 FROM us_congress.main.bill_summaries(118, 'hr', 2882))
+         AND (SELECT count(*) > 0 FROM us_congress.main.bill_text_versions(118, 'hr', 2882))
+  # Key-gated. The 118th Congress is closed; every part of the profile is non-empty.
+  - name: congress_118_output
+    check_sql: >-
+      SELECT (SELECT count(*) > 200 FROM us_congress.main.laws(118, law_type := 'public'))
+         AND (SELECT count(*) > 100 FROM us_congress.main.house_votes(118, session := 1))
+         AND (SELECT count(*) > 10 FROM us_congress.main.committees(congress := 118, chamber := 'senate'))
+         AND (SELECT count(*) > 100 FROM us_congress.main.nominations(congress := 118))
+         AND (SELECT count(*) >= 0 FROM us_congress.main.treaties(congress := 118))
+         AND (SELECT count(*) > 100 FROM us_congress.main.amendments(congress := 118, amendment_type := 'samdt'))
+         AND (SELECT count(*) > 0 FROM (SELECT * FROM us_congress.main.bills(congress := 118) LIMIT 10))
+         AND (SELECT count(*) > 50 FROM us_congress.main.congress_gov_members(congress := 118, state := 'CA'))
+         AND (SELECT count(*) > 0 FROM us_congress.main.sponsored_legislation('S000148'))
+         AND (SELECT count(*) > 0 FROM us_congress.main.cosponsored_legislation('S000148'))
+         AND (SELECT count(*) = 1 FROM us_congress.main.house_vote_positions(118, 1, 296) WHERE bioguide_id = 'P000197')
+  # Deterministic: decoded locally.
+  - name: decode_cast_code
+    reference_sql: SELECT us_congress.main.vote_cast_label(6) AS label

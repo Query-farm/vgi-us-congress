@@ -1,0 +1,41 @@
+{
+ "committees": [
+  {
+   "chamber": "Senate",
+   "committeeTypeCode": "Standing",
+   "name": "Finance Committee",
+   "subcommittees": [
+    {
+     "name": "Health Care Subcommittee",
+     "systemCode": "ssfi10",
+     "url": "https://api.congress.gov/v3/committee/senate/ssfi10?format=json"
+    }
+   ],
+   "systemCode": "ssfi00",
+   "updateDate": "2023-01-20T12:00:00Z",
+   "url": "https://api.congress.gov/v3/committee/senate/ssfi00?format=json"
+  },
+  {
+   "chamber": "Senate",
+   "committeeTypeCode": "Subcommittee",
+   "name": "Health Care Subcommittee",
+   "parent": {
+    "name": "Finance Committee",
+    "systemCode": "ssfi00",
+    "url": "https://api.congress.gov/v3/committee/senate/ssfi00?format=json"
+   },
+   "systemCode": "ssfi10",
+   "updateDate": "2023-01-20T12:00:00Z",
+   "url": "https://api.congress.gov/v3/committee/senate/ssfi10?format=json"
+  },
+  {
+   "chamber": "Senate",
+   "committeeTypeCode": "Standing",
+   "name": "Judiciary Committee",
+   "subcommittees": [],
+   "systemCode": "ssju00",
+   "updateDate": "2023-01-20T12:00:00Z",
+   "url": "https://api.congress.gov/v3/committee/senate/ssju00?format=json"
+  }
+ ]
+}

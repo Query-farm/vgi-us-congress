@@ -1,0 +1,34 @@
+{
+ "cosponsoredLegislation": [
+  {
+   "congress": 119,
+   "introducedDate": "2025-06-10",
+   "latestAction": {
+    "actionDate": "2025-06-10",
+    "text": "Read twice and referred to the Committee on Finance."
+   },
+   "number": "2001",
+   "policyArea": {
+    "name": "Health"
+   },
+   "title": "Example Health Act",
+   "type": "S",
+   "url": "https://api.congress.gov/v3/bill/119/s/2001?format=json"
+  },
+  {
+   "congress": 118,
+   "introducedDate": "2023-03-01",
+   "latestAction": {
+    "actionDate": "2023-03-01",
+    "text": "Referred to the Committee on Banking."
+   },
+   "number": "600",
+   "policyArea": {
+    "name": "Finance and Financial Sector"
+   },
+   "title": "Example Banking Act",
+   "type": "S",
+   "url": "https://api.congress.gov/v3/bill/118/s/600?format=json"
+  }
+ ]
+}

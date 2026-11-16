@@ -1,0 +1,305 @@
+[
+ {
+  "id": {
+   "bioguide": "B001210",
+   "thomas": "01299",
+   "lis": "S017",
+   "govtrack": 300016,
+   "opensecrets": "N00002200",
+   "votesmart": 53359,
+   "icpsr": 1366,
+   "fec": [
+    "S6WV00014"
+   ],
+   "wikipedia": "Robert Byrd",
+   "house_history": 10332,
+   "wikidata": "Q276524",
+   "google_entity_id": "kg:/m/06bss"
+  },
+  "name": {
+   "first": "Robert",
+   "middle": "C.",
+   "last": "Byrd"
+  },
+  "bio": {
+   "birthday": "1917-11-20",
+   "gender": "M"
+  },
+  "terms": [
+   {
+    "type": "rep",
+    "start": "1953-01-03",
+    "end": "1955-01-03",
+    "state": "WV",
+    "district": 6,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1955-01-05",
+    "end": "1957-01-03",
+    "state": "WV",
+    "district": 6,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1957-01-03",
+    "end": "1959-01-03",
+    "state": "WV",
+    "district": 6,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1959-01-07",
+    "end": "1965-01-03",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1965-01-04",
+    "end": "1971-01-03",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1971-01-21",
+    "end": "1977-01-03",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1977-01-04",
+    "end": "1983-01-03",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1983-01-03",
+    "end": "1989-01-03",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1989-01-03",
+    "end": "1995-01-03",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1995-01-04",
+    "end": "2001-01-03",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "2001-01-03",
+    "end": "2007-01-03",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat",
+    "url": "http://byrd.senate.gov"
+   },
+   {
+    "type": "sen",
+    "start": "2007-01-04",
+    "end": "2010-06-28",
+    "state": "WV",
+    "class": 1,
+    "party": "Democrat",
+    "url": "http://byrd.senate.gov"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "L000174",
+   "thomas": "01383",
+   "lis": "S057",
+   "govtrack": 300065,
+   "opensecrets": "N00009918",
+   "votesmart": 53353,
+   "icpsr": 14307,
+   "fec": [
+    "S4VT00017"
+   ],
+   "cspan": 1552,
+   "wikipedia": "Patrick Leahy",
+   "ballotpedia": "Patrick Leahy",
+   "maplight": 586,
+   "wikidata": "Q59315",
+   "google_entity_id": "kg:/m/0202kf"
+  },
+  "name": {
+   "first": "Patrick",
+   "middle": "J.",
+   "last": "Leahy",
+   "official_full": "Patrick J. Leahy"
+  },
+  "bio": {
+   "birthday": "1940-03-31",
+   "gender": "M"
+  },
+  "leadership_roles": [
+   {
+    "title": "President Pro Tempore of the Senate",
+    "chamber": "senate",
+    "start": "2021-01-20",
+    "end": "2023-01-03"
+   }
+  ],
+  "terms": [
+   {
+    "type": "sen",
+    "start": "1975-01-14",
+    "end": "1981-01-03",
+    "state": "VT",
+    "class": 3,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1981-01-05",
+    "end": "1987-01-03",
+    "state": "VT",
+    "class": 3,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1987-01-06",
+    "end": "1993-01-03",
+    "state": "VT",
+    "class": 3,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1993-01-05",
+    "end": "1999-01-03",
+    "state": "VT",
+    "class": 3,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1999-01-06",
+    "end": "2005-01-03",
+    "state": "VT",
+    "class": 3,
+    "party": "Democrat",
+    "url": "http://leahy.senate.gov/"
+   },
+   {
+    "type": "sen",
+    "start": "2005-01-04",
+    "end": "2011-01-03",
+    "state": "VT",
+    "class": 3,
+    "party": "Democrat",
+    "url": "http://leahy.senate.gov/"
+   },
+   {
+    "type": "sen",
+    "start": "2011-01-05",
+    "end": "2017-01-03",
+    "state": "VT",
+    "class": 3,
+    "party": "Democrat",
+    "url": "https://www.leahy.senate.gov",
+    "address": "437 Russell Senate Office Building Washington DC 20510",
+    "phone": "202-224-4242",
+    "fax": "202-224-3479",
+    "contact_form": "https://www.leahy.senate.gov/contact/",
+    "office": "437 Russell Senate Office Building",
+    "state_rank": "senior",
+    "rss_url": "http://www.leahy.senate.gov/rss/feeds/press/"
+   },
+   {
+    "type": "sen",
+    "start": "2017-01-03",
+    "end": "2023-01-03",
+    "state": "VT",
+    "class": 3,
+    "state_rank": "senior",
+    "party": "Democrat",
+    "url": "https://www.leahy.senate.gov",
+    "rss_url": "http://www.leahy.senate.gov/rss/feeds/press/",
+    "address": "437 Russell Senate Office Building Washington DC 20510",
+    "office": "437 Russell Senate Office Building",
+    "phone": "202-224-4242",
+    "contact_form": "https://www.leahy.senate.gov/contact/",
+    "fax": "202-224-3479"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "M000043",
+   "govtrack": 407071,
+   "icpsr": 5903,
+   "house_history": 17381,
+   "wikipedia": "James Madison",
+   "wikidata": "Q11813",
+   "google_entity_id": "kg:/m/0424m",
+   "ballotpedia": "James Madison"
+  },
+  "name": {
+   "first": "James",
+   "last": "Madison"
+  },
+  "bio": {
+   "birthday": "1751-03-16",
+   "gender": "M"
+  },
+  "terms": [
+   {
+    "type": "rep",
+    "start": "1789-03-04",
+    "end": "1791-03-03",
+    "state": "VA",
+    "district": 5,
+    "party": "Republican"
+   },
+   {
+    "type": "rep",
+    "start": "1791-10-24",
+    "end": "1793-03-03",
+    "state": "VA",
+    "district": 5,
+    "party": "Republican"
+   },
+   {
+    "type": "rep",
+    "start": "1793-12-02",
+    "end": "1795-03-03",
+    "state": "VA",
+    "district": 15,
+    "party": "Republican"
+   },
+   {
+    "type": "rep",
+    "start": "1795-12-07",
+    "end": "1797-03-03",
+    "state": "VA",
+    "district": 15,
+    "party": "Republican"
+   }
+  ]
+ }
+]

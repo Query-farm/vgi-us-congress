@@ -1,0 +1,189 @@
+# name: test/sql/us_congress.test
+# description: Keyless relations (members, terms, Voteview, senate.gov) against test/fixtures, via the mock upstream
+# group: [us_congress]
+
+require vgi
+
+require-env US_CONGRESS_WORKER
+
+require-env US_CONGRESS_MOCK_API
+
+require-env US_CONGRESS_CACHE_DIR
+
+statement ok
+ATTACH 'us_congress' (TYPE vgi, LOCATION '{US_CONGRESS_WORKER}', cache_dir '{US_CONGRESS_CACHE_DIR}/keyless', legislators_url '{US_CONGRESS_MOCK_API}/legislators', voteview_url '{US_CONGRESS_MOCK_API}/voteview', senate_url '{US_CONGRESS_MOCK_API}/senate', congress_gov_url '{US_CONGRESS_MOCK_API}/congress/v3');
+
+# ---------------------------------------------------------------- members (catalog table)
+
+query I
+SELECT count(*) FROM us_congress.main.members;
+----
+14
+
+query TTIITT
+SELECT bioguide_id, full_name, term_count, senate_terms, is_current, latest_chamber
+FROM us_congress.main.members WHERE bioguide_id IN ('M000043', 'S000033', 'B001210') ORDER BY bioguide_id;
+----
+B001210	Robert C. Byrd	12	9	false	senate
+M000043	James Madison	4	0	false	house
+S000033	Bernard Sanders	12	4	true	senate
+
+# Cross-walk IDs keep their types: lis/thomas are codes, icpsr/govtrack are integers.
+query TIII
+SELECT lis_id, icpsr_id, govtrack_id, len(fec_ids) FROM us_congress.main.members WHERE bioguide_id = 'S000033';
+----
+S313	29147	400357	2
+
+query T
+SELECT typeof(birthday) FROM us_congress.main.members LIMIT 1;
+----
+DATE
+
+# ---------------------------------------------------------------- member_terms (catalog table)
+
+query ITTTI
+SELECT term_number, chamber, start_date, state, district FROM us_congress.main.member_terms
+WHERE bioguide_id = 'M000043' ORDER BY term_number;
+----
+1	house	1789-03-04	VA	5
+2	house	1791-10-24	VA	5
+3	house	1793-12-02	VA	15
+4	house	1795-12-07	VA	15
+
+# Who represented Vermont in the Senate on 2010-06-01 (from the fixture people).
+query TT
+SELECT bioguide_id, party FROM us_congress.main.member_terms
+WHERE chamber = 'senate' AND state = 'VT' AND DATE '2010-06-01' BETWEEN start_date AND end_date ORDER BY bioguide_id;
+----
+L000174	Democrat
+S000033	Independent
+
+query I
+SELECT count(*) FROM us_congress.main.member_terms WHERE chamber = 'senate' AND district IS NOT NULL;
+----
+0
+
+# ---------------------------------------------------------------- Voteview
+
+query IIIIT
+SELECT rollnumber, clerk_rollnumber, yea_count, nay_count, vote_question FROM us_congress.main.rollcalls(119, chamber := 'senate') ORDER BY rollnumber;
+----
+1	1	84	9	On the Cloture Motion
+2	2	82	10	On the Motion to Proceed
+3	3	70	25	On the Amendment
+
+# Both chambers of one Congress, and every Congress (HSall) through the no-argument overload.
+query TI
+SELECT chamber, count(*) FROM us_congress.main.rollcalls(119) GROUP BY chamber ORDER BY chamber;
+----
+house	1
+senate	3
+
+query IT
+SELECT congress, chamber FROM us_congress.main.rollcalls(chamber := 'house') GROUP BY ALL ORDER BY ALL;
+----
+118	house
+119	house
+
+query TTII
+SELECT bioguide_id, vote, cast_code, rollnumber FROM us_congress.main.member_votes(119, chamber := 'senate')
+WHERE rollnumber = 1 ORDER BY bioguide_id;
+----
+B001230	Yea	1	1
+B001261	Yea	1	1
+B001288	Nay	6	1
+B001299	Yea	1	1
+H001076	Not Voting	9	1
+S000033	Nay	6	1
+S000148	Yea	1	1
+
+query TI
+SELECT chamber, count(*) FROM us_congress.main.member_votes(119) GROUP BY chamber ORDER BY chamber;
+----
+house	5
+senate	14
+
+# Join a member's votes to the roll call and the person.
+query TTT
+SELECT m.full_name, r.vote_question, v.vote
+FROM us_congress.main.member_votes(119, chamber := 'senate') v
+JOIN us_congress.main.rollcalls(119, chamber := 'senate') r USING (congress, chamber, rollnumber)
+JOIN us_congress.main.members m USING (bioguide_id)
+WHERE v.bioguide_id = 'S000033' ORDER BY r.rollnumber;
+----
+Bernard Sanders	On the Cloture Motion	Nay
+Bernard Sanders	On the Motion to Proceed	Nay
+
+query TTTR
+SELECT chamber, bioguide_id, party_name, nominate_dim1 FROM us_congress.main.member_ideology(119, chamber := 'senate')
+WHERE bioguide_id IN ('S000033', 'B001299') ORDER BY bioguide_id;
+----
+senate	B001299	Republican	0.649
+senate	S000033	Independent	-0.546
+
+# Presidents appear once per Congress even when both chamber files list them.
+query I
+SELECT count(*) FROM us_congress.main.member_ideology(119) WHERE chamber = 'president';
+----
+1
+
+query I
+SELECT count(*) FROM us_congress.main.member_ideology();
+----
+23
+
+query T
+SELECT us_congress.main.vote_cast_label(c) FROM (VALUES (1), (6), (9), (42), (NULL)) t(c) ORDER BY c NULLS LAST;
+----
+Yea
+Nay
+Not Voting
+NULL
+NULL
+
+# ---------------------------------------------------------------- senate.gov
+
+query IITTII
+SELECT vote_number, session, vote_date, issue, yeas, nays FROM us_congress.main.senate_votes(119, 1) ORDER BY vote_number;
+----
+1	1	2025-01-09	S. 5	84	9
+2	1	2025-01-13	S. 5	82	10
+3	1	2025-01-15	S. 5	70	25
+
+query TTT
+SELECT lis_member_id, bioguide_id, vote_cast FROM us_congress.main.senate_vote_positions(119, 1, 1) ORDER BY lis_member_id;
+----
+S317	B001261	Yea
+S354	B001230	Yea
+S370	B001288	Nay
+S388	H001076	Not Voting
+S428	A000382	Yea
+S429	B001299	Yea
+
+query T
+SELECT DISTINCT vote_timestamp AT TIME ZONE 'UTC' FROM us_congress.main.senate_vote_positions(119, 1, 1);
+----
+2025-01-09 19:54:00
+
+# A vote senate.gov never published is a clear upstream error.
+statement error
+SELECT * FROM us_congress.main.senate_vote_positions(119, 1, 999);
+----
+<REGEX>:.*HTTP 404.*
+
+statement error
+SELECT * FROM us_congress.main.member_votes(0);
+----
+<REGEX>:.*
+
+# ---------------------------------------------------------------- cache
+
+query I
+SELECT count(*) > 10 FROM us_congress.main.cache_files WHERE url LIKE '{US_CONGRESS_MOCK_API}%';
+----
+true
+
+query I
+SELECT count(*) FROM us_congress.main.cache_files WHERE sha256 IS NULL OR bytes <= 0;
+----
+0

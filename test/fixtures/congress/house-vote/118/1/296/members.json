@@ -1,0 +1,56 @@
+{
+ "houseRollCallVoteMemberVotes": {
+  "congress": 118,
+  "identifier": 11812023296,
+  "legislationNumber": "583",
+  "legislationType": "HRES",
+  "result": "Passed",
+  "results": [
+   {
+    "bioguideID": "P000197",
+    "firstName": "Nancy",
+    "lastName": "Pelosi",
+    "voteCast": "Nay",
+    "voteParty": "D",
+    "voteState": "CA"
+   },
+   {
+    "bioguideID": "J000294",
+    "firstName": "Hakeem",
+    "lastName": "Jeffries",
+    "voteCast": "Nay",
+    "voteParty": "D",
+    "voteState": "NY"
+   },
+   {
+    "bioguideID": "R000395",
+    "firstName": "Harold",
+    "lastName": "Rogers",
+    "voteCast": "Aye",
+    "voteParty": "R",
+    "voteState": "KY"
+   },
+   {
+    "bioguideID": "S000522",
+    "firstName": "Christopher",
+    "lastName": "Smith",
+    "voteCast": "Aye",
+    "voteParty": "R",
+    "voteState": "NJ"
+   },
+   {
+    "bioguideID": "O000172",
+    "firstName": "Alexandria",
+    "lastName": "Ocasio-Cortez",
+    "voteCast": "Not Voting",
+    "voteParty": "D",
+    "voteState": "NY"
+   }
+  ],
+  "rollCallNumber": 296,
+  "sessionNumber": 1,
+  "startDate": "2023-07-13T14:05:00-04:00",
+  "voteQuestion": "On Agreeing to the Resolution",
+  "voteType": "Recorded Vote"
+ }
+}

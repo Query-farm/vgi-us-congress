@@ -1,0 +1,91 @@
+{
+ "bill": {
+  "actions": {
+   "count": 64,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/actions?format=json"
+  },
+  "amendments": {
+   "count": 124,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/amendments?format=json"
+  },
+  "cboCostEstimates": [
+   {
+    "description": "As ordered reported by the House Committee on Natural Resources on November 15, 2023\n",
+    "pubDate": "2024-01-10T18:25:00Z",
+    "title": "H.R. 2882, Udall Foundation Reauthorization Act of 2023",
+    "url": "https://www.cbo.gov/publication/59871"
+   }
+  ],
+  "committeeReports": [
+   {
+    "citation": "H. Rept. 118-364",
+    "url": "https://api.congress.gov/v3/committee-report/118/HRPT/364?format=json"
+   }
+  ],
+  "committees": {
+   "count": 2,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/committees?format=json"
+  },
+  "congress": 118,
+  "cosponsors": {
+   "count": 7,
+   "countIncludingWithdrawnCosponsors": 7,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/cosponsors?format=json"
+  },
+  "introducedDate": "2023-04-26",
+  "latestAction": {
+   "actionDate": "2024-03-23",
+   "text": "Became Public Law No: 118-47."
+  },
+  "laws": [
+   {
+    "number": "118-47",
+    "type": "Public Law"
+   }
+  ],
+  "legislationUrl": "https://www.congress.gov/bill/118th-congress/house-bill/2882",
+  "number": "2882",
+  "originChamber": "House",
+  "originChamberCode": "H",
+  "policyArea": {
+   "name": "Economics and Public Finance"
+  },
+  "relatedBills": {
+   "count": 24,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/relatedbills?format=json"
+  },
+  "sponsors": [
+   {
+    "bioguideId": "C001133",
+    "district": 6,
+    "firstName": "Juan",
+    "fullName": "Rep. Ciscomani, Juan [R-AZ-6]",
+    "isByRequest": "N",
+    "lastName": "Ciscomani",
+    "party": "R",
+    "state": "AZ",
+    "url": "https://api.congress.gov/v3/member/C001133?format=json"
+   }
+  ],
+  "subjects": {
+   "count": 451,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/subjects?format=json"
+  },
+  "summaries": {
+   "count": 7,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/summaries?format=json"
+  },
+  "textVersions": {
+   "count": 7,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/text?format=json"
+  },
+  "title": "Further Consolidated Appropriations Act, 2024",
+  "titles": {
+   "count": 49,
+   "url": "https://api.congress.gov/v3/bill/118/hr/2882/titles?format=json"
+  },
+  "type": "HR",
+  "updateDate": "2026-01-15T01:16:52Z",
+  "updateDateIncludingText": "2026-01-15T01:16:52Z"
+ }
+}

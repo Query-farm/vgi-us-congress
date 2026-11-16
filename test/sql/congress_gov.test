@@ -1,0 +1,234 @@
+# name: test/sql/congress_gov.test
+# description: Congress.gov relations (key-gated) against the mock API: secret handling, paging, pushdown
+# group: [us_congress]
+
+require vgi
+
+require-env US_CONGRESS_WORKER
+
+require-env US_CONGRESS_MOCK_API
+
+require-env US_CONGRESS_CACHE_DIR
+
+statement ok
+ATTACH 'us_congress' (TYPE vgi, LOCATION '{US_CONGRESS_WORKER}', cache_dir '{US_CONGRESS_CACHE_DIR}/keyed', legislators_url '{US_CONGRESS_MOCK_API}/legislators', voteview_url '{US_CONGRESS_MOCK_API}/voteview', senate_url '{US_CONGRESS_MOCK_API}/senate', congress_gov_url '{US_CONGRESS_MOCK_API}/congress/v3');
+
+# Without a secret the scan fails and names the secret type; binding (DESCRIBE) still works.
+statement error
+SELECT * FROM us_congress.main.bills(congress := 118);
+----
+<REGEX>:.*CREATE SECRET \(TYPE us_congress.*
+
+query I
+SELECT count(*) FROM (DESCRIBE SELECT * FROM us_congress.main.bills(congress := 118));
+----
+12
+
+# A wrong key is rejected by the API with HTTP 403.
+statement ok
+CREATE SECRET congress_bad (TYPE us_congress, API_KEY 'wrong-key');
+
+statement error
+SELECT * FROM us_congress.main.bills(congress := 118);
+----
+<REGEX>:.*HTTP 403.*
+
+statement ok
+DROP SECRET congress_bad;
+
+statement ok
+CREATE SECRET congress_test (TYPE us_congress, API_KEY 'test-key');
+
+# ---------------------------------------------------------------- bills: paging + pushdown
+
+# The mock serves two items per page, so three bills take two requests.
+query TIT
+SELECT bill_id, bill_number, origin_chamber FROM us_congress.main.bills(congress := 118, bill_type := 'hr') ORDER BY bill_number;
+----
+hr27-118	27	house
+hr29-118	29	house
+hr33-118	33	house
+
+# WHERE congress / bill_type are pushed into the request path: the unfiltered
+# /bill listing (a sentinel 117th-Congress bill) is never read.
+query T
+SELECT bill_id FROM us_congress.main.bills() WHERE congress = 118 AND bill_type = 'hr' ORDER BY bill_id;
+----
+hr27-118
+hr29-118
+hr33-118
+
+query T
+SELECT bill_id FROM us_congress.main.bills();
+----
+hr1-117
+
+# update_date ranges are pushed as fromDateTime/toDateTime (and re-applied).
+query T
+SELECT bill_id FROM us_congress.main.bills(congress := 118) WHERE update_date >= TIMESTAMPTZ '2025-01-01 00:00:00+00' ORDER BY bill_id;
+----
+hr27-118
+hr29-118
+
+query T
+SELECT typeof(update_date) FROM us_congress.main.bills(congress := 118) LIMIT 1;
+----
+TIMESTAMP WITH TIME ZONE
+
+statement error
+SELECT * FROM us_congress.main.bills(bill_type := 'hr');
+----
+<REGEX>:.*needs congress.*
+
+statement error
+SELECT * FROM us_congress.main.bills(congress := 118, bill_type := 'xyz');
+----
+<REGEX>:.*
+
+# ---------------------------------------------------------------- one bill and its children
+
+query TTTTT
+SELECT bill_id, sponsor_bioguide_id, policy_area, became_law, law_numbers::VARCHAR FROM us_congress.main.bill(118, 'hr', 2882);
+----
+hr2882-118	C001133	Economics and Public Finance	true	[118-47]
+
+query II
+SELECT count(*), count(vote_roll_number) FROM us_congress.main.bill_actions(118, 'hr', 2882);
+----
+6	1
+
+query TII
+SELECT vote_chamber, vote_session, vote_roll_number FROM us_congress.main.bill_actions(118, 'hr', 2882) WHERE vote_roll_number IS NOT NULL;
+----
+house	2	102
+
+query TTT
+SELECT bioguide_id, party, is_original_cosponsor FROM us_congress.main.bill_cosponsors(118, 'hr', 2882) ORDER BY bioguide_id;
+----
+C001053	R	false
+S001218	D	true
+V000136	D	false
+
+# Four legislative subjects over two pages, plus the policy area exactly once.
+query II
+SELECT count(*) FILTER (WHERE NOT is_policy_area), count(*) FILTER (WHERE is_policy_area) FROM us_congress.main.bill_subjects(118, 'hr', 2882);
+----
+4	1
+
+query TT
+SELECT version_code, action_desc FROM us_congress.main.bill_summaries(118, 'hr', 2882) ORDER BY action_date;
+----
+00	Introduced in House
+08	Reported to House, Part I
+53	Passed House
+
+query I
+SELECT count(*) FROM us_congress.main.bill_text_versions(118, 'hr', 2882) WHERE pdf_url LIKE 'https://www.congress.gov/%';
+----
+7
+
+# ---------------------------------------------------------------- laws, amendments
+
+query TTT
+SELECT law_number, law_type, bill_id FROM us_congress.main.laws(118) ORDER BY law_number;
+----
+118-2	Public Law	s619-118
+118-4	Public Law	hr346-118
+118-90	Public Law	s3764-118
+
+query I
+SELECT count(*) FROM us_congress.main.laws(118, law_type := 'public');
+----
+3
+
+query TI
+SELECT amendment_type, amendment_number FROM us_congress.main.amendments(congress := 118, amendment_type := 'samdt') ORDER BY amendment_number;
+----
+samdt	1388
+samdt	1630
+samdt	1640
+
+# ---------------------------------------------------------------- members, legislation
+
+query TTI
+SELECT bioguide_id, state_name, district FROM us_congress.main.congress_gov_members(congress := 118, state := 'CA') ORDER BY bioguide_id;
+----
+F000480	California	20
+M001225	California	15
+
+query TI
+SELECT coalesce(bill_id, 'amendment'), amendment_number FROM us_congress.main.sponsored_legislation('S000148') ORDER BY 1;
+----
+amendment	1400
+s2001-119	NULL
+s600-118	NULL
+
+query I
+SELECT count(*) FROM us_congress.main.cosponsored_legislation('S000148');
+----
+2
+
+statement error
+SELECT * FROM us_congress.main.sponsored_legislation('not-an-id');
+----
+<REGEX>:.*
+
+# ---------------------------------------------------------------- committees, nominations, treaties
+
+query TTT
+SELECT system_code, chamber, parent_system_code FROM us_congress.main.committees(congress := 118, chamber := 'senate') ORDER BY system_code;
+----
+ssfi00	senate	NULL
+ssfi10	senate	ssfi00
+ssju00	senate	NULL
+
+query TTT
+SELECT citation, is_civilian, is_military FROM us_congress.main.nominations(congress := 119) ORDER BY citation;
+----
+PN12-1	true	false
+PN373	true	false
+PN50	false	true
+
+# WHERE congress = 119 is pushed into the request path too.
+query I
+SELECT count(*) FROM us_congress.main.nominations() WHERE congress = 119;
+----
+3
+
+query IIT
+SELECT congress_received, number, topic FROM us_congress.main.treaties(congress := 117) ORDER BY number;
+----
+117	1	Maritime Boundaries and Claims
+117	3	International Law and Organization
+
+# ---------------------------------------------------------------- House votes
+
+query IITT
+SELECT roll_call_number, legislation_number, result, amendment_type FROM us_congress.main.house_votes(118, session := 1) ORDER BY roll_call_number;
+----
+296	583	Passed	NULL
+320	NULL	Failed	hamdt
+
+query TTI
+SELECT party, vote_cast, count(*) FROM us_congress.main.house_vote_positions(118, 1, 296) GROUP BY ALL ORDER BY ALL;
+----
+D	Nay	2
+D	Not Voting	1
+R	Aye	2
+
+# Positions join the keyless members table on bioguide_id.
+query T
+SELECT m.full_name FROM us_congress.main.house_vote_positions(118, 1, 296) p
+JOIN us_congress.main.members m USING (bioguide_id) WHERE p.vote_cast = 'Not Voting';
+----
+Alexandria Ocasio-Cortez
+
+statement error
+SELECT * FROM us_congress.main.house_votes(117);
+----
+<REGEX>:.*
+
+statement error
+SELECT * FROM us_congress.main.bill(118, 'hr', 999999);
+----
+<REGEX>:.*HTTP 404.*

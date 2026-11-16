@@ -1,0 +1,1476 @@
+[
+ {
+  "id": {
+   "bioguide": "S000033",
+   "thomas": "01010",
+   "lis": "S313",
+   "govtrack": 400357,
+   "opensecrets": "N00000528",
+   "votesmart": 27110,
+   "fec": [
+    "H8VT01016",
+    "S4VT00033"
+   ],
+   "cspan": 994,
+   "wikipedia": "Bernie Sanders",
+   "ballotpedia": "Bernie Sanders",
+   "maplight": 450,
+   "icpsr": 29147,
+   "house_history": 21173,
+   "wikidata": "Q359442",
+   "google_entity_id": "kg:/m/01_gbv",
+   "pictorial": 13382
+  },
+  "name": {
+   "first": "Bernard",
+   "last": "Sanders",
+   "nickname": "Bernie",
+   "official_full": "Bernard Sanders"
+  },
+  "bio": {
+   "birthday": "1941-09-08",
+   "gender": "M"
+  },
+  "leadership_roles": [
+   {
+    "title": "Senate Democratic Outreach Chair",
+    "chamber": "senate",
+    "start": "2023-01-03",
+    "end": "2025-01-03"
+   },
+   {
+    "title": "Senate Democratic Outreach Chair",
+    "chamber": "senate",
+    "start": "2025-01-03"
+   }
+  ],
+  "terms": [
+   {
+    "type": "rep",
+    "start": "1991-01-03",
+    "end": "1993-01-03",
+    "state": "VT",
+    "district": 0,
+    "party": "Independent",
+    "caucus": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1993-01-05",
+    "end": "1995-01-03",
+    "state": "VT",
+    "district": 0,
+    "party": "Independent",
+    "caucus": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1995-01-04",
+    "end": "1997-01-03",
+    "state": "VT",
+    "district": 0,
+    "party": "Independent",
+    "caucus": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1997-01-07",
+    "end": "1999-01-03",
+    "state": "VT",
+    "district": 0,
+    "party": "Independent",
+    "caucus": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1999-01-06",
+    "end": "2001-01-03",
+    "state": "VT",
+    "district": 0,
+    "party": "Independent",
+    "caucus": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "2001-01-03",
+    "end": "2003-01-03",
+    "state": "VT",
+    "district": 0,
+    "party": "Independent",
+    "caucus": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "2003-01-07",
+    "end": "2005-01-03",
+    "state": "VT",
+    "district": 0,
+    "party": "Independent",
+    "caucus": "Democrat",
+    "url": "http://bernie.house.gov"
+   },
+   {
+    "type": "rep",
+    "start": "2005-01-04",
+    "end": "2007-01-03",
+    "state": "VT",
+    "district": 0,
+    "party": "Independent",
+    "caucus": "Democrat",
+    "url": "http://bernie.house.gov"
+   },
+   {
+    "type": "sen",
+    "start": "2007-01-04",
+    "end": "2013-01-03",
+    "state": "VT",
+    "class": 1,
+    "party": "Independent",
+    "caucus": "Democrat",
+    "url": "http://sanders.senate.gov/",
+    "address": "332 DIRKSEN SENATE OFFICE BUILDING WASHINGTON DC 20510",
+    "phone": "202-224-5141",
+    "fax": "202-228-0776",
+    "contact_form": "http://www.sanders.senate.gov/contact/",
+    "office": "332 Dirksen Senate Office Building"
+   },
+   {
+    "type": "sen",
+    "start": "2013-01-03",
+    "end": "2019-01-03",
+    "state": "VT",
+    "party": "Independent",
+    "caucus": "Democrat",
+    "class": 1,
+    "url": "https://www.sanders.senate.gov",
+    "address": "332 Dirksen Senate Office Building Washington DC 20510",
+    "phone": "202-224-5141",
+    "fax": "202-228-0776",
+    "contact_form": "http://www.sanders.senate.gov/contact/",
+    "office": "332 Dirksen Senate Office Building",
+    "state_rank": "junior",
+    "rss_url": "http://www.sanders.senate.gov/rss/"
+   },
+   {
+    "type": "sen",
+    "start": "2019-01-03",
+    "end": "2025-01-03",
+    "state": "VT",
+    "class": 1,
+    "party": "Independent",
+    "caucus": "Democrat",
+    "state_rank": "senior",
+    "url": "https://www.sanders.senate.gov",
+    "rss_url": "http://www.sanders.senate.gov/rss/",
+    "contact_form": "https://www.sanders.senate.gov/contact/",
+    "address": "332 Dirksen Senate Office Building Washington DC 20510",
+    "office": "332 Dirksen Senate Office Building",
+    "phone": "202-224-5141"
+   },
+   {
+    "type": "sen",
+    "start": "2025-01-03",
+    "end": "2031-01-03",
+    "state": "VT",
+    "class": 1,
+    "state_rank": "senior",
+    "party": "Independent",
+    "caucus": "Democrat",
+    "url": "https://www.sanders.senate.gov",
+    "rss_url": "http://www.sanders.senate.gov/rss/",
+    "contact_form": "https://www.sanders.senate.gov/contact/",
+    "address": "332 Dirksen Senate Office Building Washington DC 20510",
+    "office": "332 Dirksen Senate Office Building",
+    "phone": "202-224-5141"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "B001261",
+   "thomas": "01881",
+   "lis": "S317",
+   "govtrack": 412251,
+   "opensecrets": "N00006236",
+   "votesmart": 52662,
+   "fec": [
+    "S6WY00068"
+   ],
+   "cspan": 1024777,
+   "wikipedia": "John Barrasso",
+   "ballotpedia": "John Barrasso",
+   "maplight": 732,
+   "icpsr": 40707,
+   "wikidata": "Q720521",
+   "google_entity_id": "kg:/m/02rsm32",
+   "pictorial": 13410
+  },
+  "name": {
+   "first": "John",
+   "middle": "A.",
+   "last": "Barrasso",
+   "official_full": "John Barrasso"
+  },
+  "bio": {
+   "birthday": "1952-07-21",
+   "gender": "M"
+  },
+  "leadership_roles": [
+   {
+    "title": "Senate Republican Conference Chair",
+    "chamber": "senate",
+    "start": "2019-01-03",
+    "end": "2021-01-03"
+   },
+   {
+    "title": "Senate Republican Conference Chair",
+    "chamber": "senate",
+    "start": "2021-01-03",
+    "end": "2023-01-03"
+   },
+   {
+    "title": "Senate Republican Conference Chair",
+    "chamber": "senate",
+    "start": "2023-01-03",
+    "end": "2025-01-03"
+   },
+   {
+    "title": "Senate Majority Whip",
+    "chamber": "senate",
+    "start": "2025-01-03"
+   }
+  ],
+  "terms": [
+   {
+    "type": "sen",
+    "start": "2007-06-25",
+    "end": "2013-01-03",
+    "state": "WY",
+    "class": 1,
+    "party": "Republican",
+    "url": "http://barrasso.senate.gov",
+    "address": "307 DIRKSEN SENATE OFFICE BUILDING WASHINGTON DC 20510",
+    "phone": "202-224-6441",
+    "fax": "202-224-1724",
+    "contact_form": "http://www.barrasso.senate.gov/public/index.cfm?FuseAction=ContactUs.ContactForm",
+    "office": "307 Dirksen Senate Office Building",
+    "how": "appointment"
+   },
+   {
+    "type": "sen",
+    "start": "2013-01-03",
+    "end": "2019-01-03",
+    "state": "WY",
+    "party": "Republican",
+    "class": 1,
+    "url": "https://www.barrasso.senate.gov",
+    "address": "307 Dirksen Senate Office Building Washington DC 20510",
+    "phone": "202-224-6441",
+    "fax": "202-224-1724",
+    "contact_form": "https://www.barrasso.senate.gov/public/index.cfm/contact-form",
+    "office": "307 Dirksen Senate Office Building",
+    "state_rank": "junior",
+    "rss_url": "http://www.barrasso.senate.gov/public/index.cfm?FuseAction=Rss.Feed"
+   },
+   {
+    "type": "sen",
+    "start": "2019-01-03",
+    "end": "2025-01-03",
+    "state": "WY",
+    "class": 1,
+    "party": "Republican",
+    "state_rank": "senior",
+    "url": "https://www.barrasso.senate.gov",
+    "rss_url": "http://www.barrasso.senate.gov/public/index.cfm?FuseAction=Rss.Feed",
+    "contact_form": "https://www.barrasso.senate.gov/public/index.cfm/contact-form",
+    "address": "307 Dirksen Senate Office Building Washington DC 20510",
+    "office": "307 Dirksen Senate Office Building",
+    "phone": "202-224-6441"
+   },
+   {
+    "type": "sen",
+    "start": "2025-01-03",
+    "end": "2031-01-03",
+    "state": "WY",
+    "class": 1,
+    "state_rank": "senior",
+    "party": "Republican",
+    "url": "https://www.barrasso.senate.gov",
+    "rss_url": "http://www.barrasso.senate.gov/public/index.cfm?FuseAction=Rss.Feed",
+    "contact_form": "https://www.barrasso.senate.gov/public/index.cfm/contact-form",
+    "address": "307 Dirksen Senate Office Building Washington DC 20510",
+    "office": "307 Dirksen Senate Office Building",
+    "phone": "202-224-6441"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "B001230",
+   "thomas": "01558",
+   "lis": "S354",
+   "govtrack": 400013,
+   "opensecrets": "N00004367",
+   "votesmart": 3470,
+   "fec": [
+    "H8WI00018",
+    "S2WI00219"
+   ],
+   "cspan": 57884,
+   "wikipedia": "Tammy Baldwin",
+   "house_history": 10361,
+   "ballotpedia": "Tammy Baldwin",
+   "maplight": 136,
+   "icpsr": 29940,
+   "wikidata": "Q40628",
+   "google_entity_id": "kg:/m/024v02",
+   "pictorial": 13412
+  },
+  "name": {
+   "first": "Tammy",
+   "last": "Baldwin",
+   "official_full": "Tammy Baldwin"
+  },
+  "bio": {
+   "birthday": "1962-02-11",
+   "gender": "F"
+  },
+  "leadership_roles": [
+   {
+    "title": "Senate Democratic Conference Secretary",
+    "chamber": "senate",
+    "start": "2021-01-03",
+    "end": "2023-01-03"
+   },
+   {
+    "title": "Senate Democratic Conference Secretary",
+    "chamber": "senate",
+    "start": "2023-01-03",
+    "end": "2025-01-03"
+   },
+   {
+    "title": "Senate Democratic Conference Secretary",
+    "chamber": "senate",
+    "start": "2025-01-03"
+   }
+  ],
+  "terms": [
+   {
+    "type": "rep",
+    "start": "1999-01-06",
+    "end": "2001-01-03",
+    "state": "WI",
+    "district": 2,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "2001-01-03",
+    "end": "2003-01-03",
+    "state": "WI",
+    "district": 2,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "2003-01-07",
+    "end": "2005-01-03",
+    "state": "WI",
+    "district": 2,
+    "party": "Democrat",
+    "url": "http://tammybaldwin.house.gov"
+   },
+   {
+    "type": "rep",
+    "start": "2005-01-04",
+    "end": "2007-01-03",
+    "state": "WI",
+    "district": 2,
+    "party": "Democrat",
+    "url": "http://tammybaldwin.house.gov"
+   },
+   {
+    "type": "rep",
+    "start": "2007-01-04",
+    "end": "2009-01-03",
+    "state": "WI",
+    "district": 2,
+    "party": "Democrat",
+    "url": "http://tammybaldwin.house.gov"
+   },
+   {
+    "type": "rep",
+    "start": "2009-01-06",
+    "end": "2011-01-03",
+    "state": "WI",
+    "district": 2,
+    "party": "Democrat",
+    "url": "http://tammybaldwin.house.gov"
+   },
+   {
+    "type": "rep",
+    "start": "2011-01-05",
+    "end": "2013-01-03",
+    "state": "WI",
+    "district": 2,
+    "party": "Democrat",
+    "url": "http://tammybaldwin.house.gov",
+    "address": "2446 Rayburn HOB; Washington DC 20515-4902",
+    "phone": "202-225-2906",
+    "fax": "202-225-6942",
+    "contact_form": "http://www.house.gov/formbaldwin/IMA/get_address.htm",
+    "office": "2446 Rayburn House Office Building"
+   },
+   {
+    "type": "sen",
+    "start": "2013-01-03",
+    "end": "2019-01-03",
+    "state": "WI",
+    "party": "Democrat",
+    "class": 1,
+    "url": "https://www.baldwin.senate.gov",
+    "address": "709 Hart Senate Office Building Washington DC 20510",
+    "phone": "202-224-5653",
+    "fax": "202-225-6942",
+    "contact_form": "https://www.baldwin.senate.gov/feedback",
+    "office": "709 Hart Senate Office Building",
+    "state_rank": "junior",
+    "rss_url": "http://www.baldwin.senate.gov/rss/feeds/?type=all"
+   },
+   {
+    "type": "sen",
+    "start": "2019-01-03",
+    "end": "2025-01-03",
+    "state": "WI",
+    "class": 1,
+    "party": "Democrat",
+    "state_rank": "junior",
+    "url": "https://www.baldwin.senate.gov",
+    "rss_url": "http://www.baldwin.senate.gov/rss/feeds/?type=all",
+    "contact_form": "https://www.baldwin.senate.gov/feedback",
+    "address": "141 Hart Senate Office Building Washington DC 20510",
+    "office": "141 Hart Senate Office Building",
+    "phone": "202-224-5653"
+   },
+   {
+    "type": "sen",
+    "start": "2025-01-03",
+    "end": "2031-01-03",
+    "state": "WI",
+    "class": 1,
+    "state_rank": "junior",
+    "party": "Democrat",
+    "url": "https://www.baldwin.senate.gov",
+    "rss_url": "http://www.baldwin.senate.gov/rss/feeds/?type=all",
+    "contact_form": "https://www.baldwin.senate.gov/feedback",
+    "address": "141 Hart Senate Office Building Washington DC 20510",
+    "office": "141 Hart Senate Office Building",
+    "phone": "202-224-5653"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "P000197",
+   "thomas": "00905",
+   "govtrack": 400314,
+   "opensecrets": "N00007360",
+   "votesmart": 26732,
+   "icpsr": 15448,
+   "fec": [
+    "H8CA05035"
+   ],
+   "cspan": 6153,
+   "wikipedia": "Nancy Pelosi",
+   "house_history": 19519,
+   "ballotpedia": "Nancy Pelosi",
+   "maplight": 408,
+   "wikidata": "Q170581",
+   "google_entity_id": "kg:/m/012v1t",
+   "pictorial": 12925
+  },
+  "name": {
+   "first": "Nancy",
+   "last": "Pelosi",
+   "official_full": "Nancy Pelosi"
+  },
+  "bio": {
+   "birthday": "1940-03-26",
+   "gender": "F"
+  },
+  "leadership_roles": [
+   {
+    "title": "House Minority Leader",
+    "chamber": "house",
+    "start": "2011-01-05",
+    "end": "2013-01-03"
+   },
+   {
+    "title": "House Minority Leader",
+    "chamber": "house",
+    "start": "2013-01-03",
+    "end": "2015-01-03"
+   },
+   {
+    "title": "House Minority Leader",
+    "chamber": "house",
+    "start": "2015-01-06",
+    "end": "2017-01-03"
+   },
+   {
+    "title": "House Minority Leader",
+    "chamber": "house",
+    "start": "2017-01-03",
+    "end": "2019-01-03"
+   },
+   {
+    "title": "Speaker of the House",
+    "chamber": "house",
+    "start": "2019-01-03",
+    "end": "2021-01-03"
+   },
+   {
+    "title": "Speaker of the House",
+    "chamber": "house",
+    "start": "2021-01-03",
+    "end": "2023-01-03"
+   }
+  ],
+  "terms": [
+   {
+    "type": "rep",
+    "start": "1987-01-06",
+    "end": "1989-01-03",
+    "state": "CA",
+    "district": 5,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1989-01-03",
+    "end": "1991-01-03",
+    "state": "CA",
+    "district": 5,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1991-01-03",
+    "end": "1993-01-03",
+    "state": "CA",
+    "district": 5,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1993-01-05",
+    "end": "1995-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1995-01-04",
+    "end": "1997-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1997-01-07",
+    "end": "1999-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1999-01-06",
+    "end": "2001-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "2001-01-03",
+    "end": "2003-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "2003-01-07",
+    "end": "2005-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat",
+    "url": "http://www.house.gov/pelosi"
+   },
+   {
+    "type": "rep",
+    "start": "2005-01-04",
+    "end": "2007-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat",
+    "url": "http://www.house.gov/pelosi"
+   },
+   {
+    "type": "rep",
+    "start": "2007-01-04",
+    "end": "2009-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat",
+    "url": "http://www.house.gov/pelosi"
+   },
+   {
+    "type": "rep",
+    "start": "2009-01-06",
+    "end": "2011-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat",
+    "url": "http://www.house.gov/pelosi"
+   },
+   {
+    "type": "rep",
+    "start": "2011-01-05",
+    "end": "2013-01-03",
+    "state": "CA",
+    "district": 8,
+    "party": "Democrat",
+    "url": "http://www.house.gov/pelosi",
+    "address": "235 Cannon HOB; Washington DC 20515-0508",
+    "phone": "202-225-4965",
+    "fax": "202-225-8259",
+    "contact_form": "http://www.house.gov/pelosi/contact/contact.html",
+    "office": "235 Cannon House Office Building"
+   },
+   {
+    "type": "rep",
+    "start": "2013-01-03",
+    "end": "2015-01-03",
+    "state": "CA",
+    "party": "Democrat",
+    "district": 12,
+    "url": "http://pelosi.house.gov",
+    "address": "235 Cannon HOB; Washington DC 20515-0512",
+    "phone": "202-225-4965",
+    "fax": "202-225-8259",
+    "contact_form": "http://pelosi.house.gov/contact-me/email-me",
+    "office": "235 Cannon House Office Building",
+    "rss_url": "http://pelosi.house.gov/atom.xml"
+   },
+   {
+    "type": "rep",
+    "start": "2015-01-06",
+    "end": "2017-01-03",
+    "state": "CA",
+    "party": "Democrat",
+    "district": 12,
+    "url": "http://pelosi.house.gov",
+    "address": "233 Cannon HOB; Washington DC 20515-0512",
+    "phone": "202-225-4965",
+    "fax": "202-225-8259",
+    "contact_form": "http://pelosi.house.gov/contact-me/email-me",
+    "office": "233 Cannon House Office Building",
+    "rss_url": "http://pelosi.house.gov/atom.xml"
+   },
+   {
+    "type": "rep",
+    "start": "2017-01-03",
+    "end": "2019-01-03",
+    "state": "CA",
+    "district": 12,
+    "party": "Democrat",
+    "phone": "202-225-4965",
+    "url": "https://pelosi.house.gov",
+    "rss_url": "http://pelosi.house.gov/atom.xml",
+    "address": "233 Cannon House Office Building; Washington DC 20515-0512",
+    "office": "233 Cannon House Office Building",
+    "fax": "202-225-8259"
+   },
+   {
+    "type": "rep",
+    "start": "2019-01-03",
+    "end": "2021-01-03",
+    "state": "CA",
+    "district": 12,
+    "party": "Democrat",
+    "phone": "202-225-4965",
+    "address": "1236 Longworth House Office Building Washington DC 20515-0512",
+    "office": "1236 Longworth House Office Building",
+    "url": "https://pelosi.house.gov",
+    "rss_url": "http://pelosi.house.gov/atom.xml"
+   },
+   {
+    "type": "rep",
+    "start": "2021-01-03",
+    "end": "2023-01-03",
+    "state": "CA",
+    "district": 12,
+    "party": "Democrat",
+    "url": "https://pelosi.house.gov",
+    "rss_url": "http://pelosi.house.gov/atom.xml",
+    "address": "1236 Longworth House Office Building Washington DC 20515-0512",
+    "office": "1236 Longworth House Office Building",
+    "phone": "202-225-4965"
+   },
+   {
+    "type": "rep",
+    "start": "2023-01-03",
+    "end": "2025-01-03",
+    "state": "CA",
+    "district": 11,
+    "party": "Democrat",
+    "url": "https://pelosi.house.gov",
+    "rss_url": "http://pelosi.house.gov/atom.xml",
+    "address": "1236 Longworth House Office Building Washington DC 20515-0511",
+    "office": "1236 Longworth House Office Building",
+    "phone": "202-225-4965"
+   },
+   {
+    "type": "rep",
+    "start": "2025-01-03",
+    "end": "2027-01-03",
+    "state": "CA",
+    "district": 11,
+    "party": "Democrat",
+    "url": "https://pelosi.house.gov",
+    "rss_url": "http://pelosi.house.gov/atom.xml",
+    "address": "1236 Longworth House Office Building Washington DC 20515-0511",
+    "office": "1236 Longworth House Office Building",
+    "phone": "202-225-4965"
+   }
+  ],
+  "family": [
+   {
+    "name": "Thomas D'Alesandro Jr.",
+    "relation": "daughter"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "S000148",
+   "thomas": "01036",
+   "lis": "S270",
+   "govtrack": 300087,
+   "opensecrets": "N00001093",
+   "votesmart": 26976,
+   "icpsr": 14858,
+   "fec": [
+    "S8NY00082",
+    "H0NY16010"
+   ],
+   "cspan": 5929,
+   "wikipedia": "Chuck Schumer",
+   "ballotpedia": "Chuck Schumer",
+   "maplight": 606,
+   "house_history": 21322,
+   "wikidata": "Q380900",
+   "google_entity_id": "kg:/m/01w74d",
+   "pictorial": 13392
+  },
+  "name": {
+   "first": "Charles",
+   "middle": "E.",
+   "nickname": "Chuck",
+   "last": "Schumer",
+   "official_full": "Charles E. Schumer"
+  },
+  "bio": {
+   "birthday": "1950-11-23",
+   "gender": "M"
+  },
+  "leadership_roles": [
+   {
+    "title": "Senate Minority Leader",
+    "chamber": "senate",
+    "start": "2017-01-03",
+    "end": "2019-01-03"
+   },
+   {
+    "title": "Senate Minority Leader",
+    "chamber": "senate",
+    "start": "2019-01-03",
+    "end": "2021-01-03"
+   },
+   {
+    "title": "Senate Minority Leader",
+    "chamber": "senate",
+    "start": "2021-01-03",
+    "end": "2021-01-20"
+   },
+   {
+    "title": "Senate Majority Leader",
+    "chamber": "senate",
+    "start": "2021-01-20",
+    "end": "2023-01-03"
+   },
+   {
+    "title": "Senate Majority Leader",
+    "chamber": "senate",
+    "start": "2023-01-03",
+    "end": "2025-01-03"
+   },
+   {
+    "title": "Senate Minority Leader",
+    "chamber": "senate",
+    "start": "2025-01-03"
+   }
+  ],
+  "terms": [
+   {
+    "type": "rep",
+    "start": "1981-01-05",
+    "end": "1983-01-03",
+    "state": "NY",
+    "district": 16,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1983-01-03",
+    "end": "1985-01-03",
+    "state": "NY",
+    "district": 10,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1985-01-03",
+    "end": "1987-01-03",
+    "state": "NY",
+    "district": 10,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1987-01-06",
+    "end": "1989-01-03",
+    "state": "NY",
+    "district": 10,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1989-01-03",
+    "end": "1991-01-03",
+    "state": "NY",
+    "district": 10,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1991-01-03",
+    "end": "1993-01-03",
+    "state": "NY",
+    "district": 10,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1993-01-05",
+    "end": "1995-01-03",
+    "state": "NY",
+    "district": 9,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1995-01-04",
+    "end": "1997-01-03",
+    "state": "NY",
+    "district": 9,
+    "party": "Democrat"
+   },
+   {
+    "type": "rep",
+    "start": "1997-01-07",
+    "end": "1999-01-03",
+    "state": "NY",
+    "district": 9,
+    "party": "Democrat"
+   },
+   {
+    "type": "sen",
+    "start": "1999-01-06",
+    "end": "2005-01-03",
+    "state": "NY",
+    "class": 3,
+    "party": "Democrat",
+    "url": "http://schumer.senate.gov/"
+   },
+   {
+    "type": "sen",
+    "start": "2005-01-04",
+    "end": "2011-01-03",
+    "state": "NY",
+    "class": 3,
+    "party": "Democrat",
+    "url": "http://schumer.senate.gov/"
+   },
+   {
+    "type": "sen",
+    "start": "2011-01-05",
+    "end": "2017-01-03",
+    "state": "NY",
+    "class": 3,
+    "party": "Democrat",
+    "url": "https://www.schumer.senate.gov",
+    "address": "322 Hart Senate Office Building Washington DC 20510",
+    "phone": "202-224-6542",
+    "fax": "202-228-3027",
+    "contact_form": "http://www.schumer.senate.gov/Contact/email-chuck",
+    "office": "322 Hart Senate Office Building",
+    "state_rank": "senior"
+   },
+   {
+    "type": "sen",
+    "start": "2017-01-03",
+    "end": "2023-01-03",
+    "state": "NY",
+    "class": 3,
+    "state_rank": "senior",
+    "party": "Democrat",
+    "url": "https://www.schumer.senate.gov",
+    "address": "322 Hart Senate Office Building Washington DC 20510",
+    "office": "322 Hart Senate Office Building",
+    "phone": "202-224-6542",
+    "contact_form": "https://www.schumer.senate.gov/contact/email-chuck",
+    "fax": "202-228-3027"
+   },
+   {
+    "type": "sen",
+    "start": "2023-01-03",
+    "end": "2029-01-03",
+    "state": "NY",
+    "class": 3,
+    "state_rank": "senior",
+    "party": "Democrat",
+    "url": "https://www.schumer.senate.gov",
+    "contact_form": "https://www.schumer.senate.gov/contact/email-chuck",
+    "address": "322 Hart Senate Office Building Washington DC 20510",
+    "office": "322 Hart Senate Office Building",
+    "phone": "202-224-6542"
+   }
+  ]
+ },
+ {
+  "id": {
+   "govtrack": 412561,
+   "bioguide": "J000294",
+   "thomas": "02149",
+   "cspan": 79612,
+   "fec": [
+    "H2NY10092"
+   ],
+   "wikipedia": "Hakeem Jeffries",
+   "votesmart": 55285,
+   "opensecrets": "N00033640",
+   "ballotpedia": "Hakeem Jeffries",
+   "maplight": 1785,
+   "icpsr": 21343,
+   "wikidata": "Q5640425",
+   "google_entity_id": "kg:/m/025_74m",
+   "pictorial": 13176
+  },
+  "name": {
+   "first": "Hakeem",
+   "last": "Jeffries",
+   "middle": "S.",
+   "official_full": "Hakeem S. Jeffries"
+  },
+  "bio": {
+   "gender": "M",
+   "birthday": "1970-08-04"
+  },
+  "leadership_roles": [
+   {
+    "title": "House Democratic Caucus Chair",
+    "chamber": "house",
+    "start": "2019-01-03",
+    "end": "2021-01-03"
+   },
+   {
+    "title": "House Democratic Caucus Chair",
+    "chamber": "house",
+    "start": "2021-01-03",
+    "end": "2023-01-03"
+   },
+   {
+    "title": "House Minority Leader",
+    "chamber": "house",
+    "start": "2023-01-03",
+    "end": "2025-01-03"
+   },
+   {
+    "title": "House Minority Leader",
+    "chamber": "house",
+    "start": "2025-01-03"
+   }
+  ],
+  "terms": [
+   {
+    "type": "rep",
+    "start": "2013-01-03",
+    "end": "2015-01-03",
+    "state": "NY",
+    "party": "Democrat",
+    "district": 8,
+    "office": "1339 Longworth House Office Building",
+    "address": "1339 Longworth HOB; Washington DC 20515-3208",
+    "phone": "202-225-5936",
+    "url": "http://jeffries.house.gov",
+    "rss_url": "http://jeffries.house.gov/rss.xml",
+    "contact_form": "https://jeffriesforms.house.gov/contact/"
+   },
+   {
+    "type": "rep",
+    "start": "2015-01-06",
+    "end": "2017-01-03",
+    "state": "NY",
+    "party": "Democrat",
+    "district": 8,
+    "office": "1607 Longworth House Office Building",
+    "address": "1607 Longworth HOB; Washington DC 20515-3208",
+    "phone": "202-225-5936",
+    "url": "http://jeffries.house.gov",
+    "rss_url": "http://jeffries.house.gov/rss.xml",
+    "contact_form": "https://jeffriesforms.house.gov/contact/"
+   },
+   {
+    "type": "rep",
+    "start": "2017-01-03",
+    "end": "2019-01-03",
+    "state": "NY",
+    "district": 8,
+    "party": "Democrat",
+    "phone": "202-225-5936",
+    "url": "https://jeffries.house.gov",
+    "rss_url": "http://jeffries.house.gov/rss.xml",
+    "address": "1607 Longworth House Office Building; Washington DC 20515-3208",
+    "office": "1607 Longworth House Office Building"
+   },
+   {
+    "type": "rep",
+    "start": "2019-01-03",
+    "end": "2021-01-03",
+    "state": "NY",
+    "district": 8,
+    "party": "Democrat",
+    "phone": "202-225-5936",
+    "address": "2433 Rayburn House Office Building Washington DC 20515-3208",
+    "office": "2433 Rayburn House Office Building",
+    "url": "https://jeffries.house.gov",
+    "rss_url": "http://jeffries.house.gov/rss.xml"
+   },
+   {
+    "type": "rep",
+    "start": "2021-01-03",
+    "end": "2023-01-03",
+    "state": "NY",
+    "district": 8,
+    "party": "Democrat",
+    "url": "https://jeffries.house.gov",
+    "rss_url": "http://jeffries.house.gov/rss.xml",
+    "address": "2433 Rayburn House Office Building Washington DC 20515-3208",
+    "office": "2433 Rayburn House Office Building",
+    "phone": "202-225-5936"
+   },
+   {
+    "type": "rep",
+    "start": "2023-01-03",
+    "end": "2025-01-03",
+    "state": "NY",
+    "district": 8,
+    "party": "Democrat",
+    "url": "https://jeffries.house.gov",
+    "rss_url": "http://jeffries.house.gov/rss.xml",
+    "address": "2433 Rayburn House Office Building Washington DC 20515-3208",
+    "office": "2433 Rayburn House Office Building",
+    "phone": "202-225-5936"
+   },
+   {
+    "type": "rep",
+    "start": "2025-01-03",
+    "end": "2027-01-03",
+    "state": "NY",
+    "district": 8,
+    "party": "Democrat",
+    "url": "https://jeffries.house.gov",
+    "rss_url": "http://jeffries.house.gov/rss.xml",
+    "address": "2267 Rayburn House Office Building Washington DC 20515-3208",
+    "office": "2267 Rayburn House Office Building",
+    "phone": "202-225-5936"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "B001288",
+   "lis": "S370",
+   "thomas": "02194",
+   "govtrack": 412598,
+   "opensecrets": "N00035267",
+   "votesmart": 76151,
+   "wikipedia": "Cory Booker",
+   "ballotpedia": "Cory Booker",
+   "fec": [
+    "S4NJ00185"
+   ],
+   "cspan": 84679,
+   "maplight": 2051,
+   "wikidata": "Q1135767",
+   "google_entity_id": "kg:/m/06p430",
+   "icpsr": 41308,
+   "pictorial": 13421
+  },
+  "name": {
+   "first": "Cory",
+   "middle": "Anthony",
+   "last": "Booker",
+   "official_full": "Cory A. Booker"
+  },
+  "bio": {
+   "birthday": "1969-04-27",
+   "gender": "M"
+  },
+  "leadership_roles": [
+   {
+    "title": "Senate Democratic Policy & Communications Committee Vice Chair",
+    "chamber": "senate",
+    "start": "2023-01-03",
+    "end": "2025-01-03"
+   },
+   {
+    "title": "Senate Democratic Strategic Communications Committee Chair",
+    "chamber": "senate",
+    "start": "2025-01-03"
+   }
+  ],
+  "terms": [
+   {
+    "type": "sen",
+    "start": "2013-10-31",
+    "end": "2015-01-03",
+    "state": "NJ",
+    "class": 2,
+    "party": "Democrat",
+    "state_rank": "junior",
+    "url": "http://www.booker.senate.gov",
+    "phone": "202-224-3224",
+    "address": "141 Hart Senate Office Building Washington DC 20510",
+    "office": "141 Hart Senate Office Building",
+    "contact_form": "http://www.booker.senate.gov/?p=contact"
+   },
+   {
+    "type": "sen",
+    "start": "2015-01-06",
+    "end": "2021-01-03",
+    "state": "NJ",
+    "class": 2,
+    "party": "Democrat",
+    "state_rank": "junior",
+    "url": "https://www.booker.senate.gov",
+    "phone": "202-224-3224",
+    "address": "717 Hart Senate Office Building Washington DC 20510",
+    "office": "717 Hart Senate Office Building",
+    "contact_form": "https://www.booker.senate.gov/?p=contact",
+    "fax": "202-224-8378"
+   },
+   {
+    "type": "sen",
+    "start": "2021-01-03",
+    "end": "2027-01-03",
+    "state": "NJ",
+    "class": 2,
+    "state_rank": "senior",
+    "party": "Democrat",
+    "url": "https://www.booker.senate.gov",
+    "contact_form": "https://www.booker.senate.gov/?p=contact",
+    "address": "306 Hart Senate Office Building Washington DC 20510",
+    "office": "306 Hart Senate Office Building",
+    "phone": "202-224-3224"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "H001076",
+   "fec": [
+    "S6NH00091"
+   ],
+   "govtrack": 412680,
+   "votesmart": 42552,
+   "wikipedia": "Maggie Hassan",
+   "ballotpedia": "Maggie Hassan",
+   "lis": "S388",
+   "wikidata": "Q24053",
+   "google_entity_id": "kg:/m/03c3zch",
+   "opensecrets": "N00038397",
+   "maplight": 2192,
+   "cspan": 67481,
+   "icpsr": 41702,
+   "pictorial": 13426
+  },
+  "name": {
+   "first": "Margaret",
+   "middle": "Wood",
+   "nickname": "Maggie",
+   "last": "Hassan",
+   "official_full": "Margaret Wood Hassan"
+  },
+  "bio": {
+   "gender": "F",
+   "birthday": "1958-02-27"
+  },
+  "terms": [
+   {
+    "type": "sen",
+    "start": "2017-01-03",
+    "end": "2023-01-03",
+    "state": "NH",
+    "class": 3,
+    "state_rank": "junior",
+    "party": "Democrat",
+    "address": "324 Hart Senate Office Building Washington DC 20510",
+    "office": "324 Hart Senate Office Building",
+    "phone": "202-224-3324",
+    "url": "https://www.hassan.senate.gov",
+    "contact_form": "https://www.hassan.senate.gov/content/contact-senator"
+   },
+   {
+    "type": "sen",
+    "start": "2023-01-03",
+    "end": "2029-01-03",
+    "state": "NH",
+    "class": 3,
+    "state_rank": "junior",
+    "party": "Democrat",
+    "url": "https://www.hassan.senate.gov",
+    "contact_form": "https://www.hassan.senate.gov/content/contact-senator",
+    "address": "324 Hart Senate Office Building Washington DC 20510",
+    "office": "324 Hart Senate Office Building",
+    "phone": "202-224-3324"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "B001299",
+   "lis": "S429",
+   "govtrack": 412702,
+   "wikipedia": "Jim Banks",
+   "wikidata": "Q16146788",
+   "votesmart": 116801,
+   "fec": [
+    "H6IN03229",
+    "S4IN00196"
+   ],
+   "opensecrets": "N00037185",
+   "maplight": 2214,
+   "google_entity_id": "kg:/m/0j621nj",
+   "ballotpedia": "Jim Banks",
+   "cspan": 89806,
+   "icpsr": 21702,
+   "pictorial": 13052
+  },
+  "name": {
+   "first": "Jim",
+   "last": "Banks",
+   "official_full": "Jim Banks"
+  },
+  "bio": {
+   "gender": "M",
+   "birthday": "1979-07-16"
+  },
+  "terms": [
+   {
+    "type": "rep",
+    "start": "2017-01-03",
+    "end": "2019-01-03",
+    "state": "IN",
+    "district": 3,
+    "party": "Republican",
+    "phone": "202-225-4436",
+    "address": "509 Cannon House Office Building; Washington DC 20515-1403",
+    "office": "509 Cannon House Office Building",
+    "url": "https://banks.house.gov"
+   },
+   {
+    "type": "rep",
+    "start": "2019-01-03",
+    "end": "2021-01-03",
+    "state": "IN",
+    "district": 3,
+    "party": "Republican",
+    "phone": "202-225-4436",
+    "address": "1713 Longworth House Office Building Washington DC 20515-1403",
+    "office": "1713 Longworth House Office Building",
+    "url": "https://banks.house.gov"
+   },
+   {
+    "type": "rep",
+    "start": "2021-01-03",
+    "end": "2023-01-03",
+    "state": "IN",
+    "district": 3,
+    "party": "Republican",
+    "url": "https://banks.house.gov",
+    "address": "1713 Longworth House Office Building Washington DC 20515-1403",
+    "office": "1713 Longworth House Office Building",
+    "phone": "202-225-4436"
+   },
+   {
+    "type": "rep",
+    "start": "2023-01-03",
+    "end": "2025-01-03",
+    "state": "IN",
+    "district": 3,
+    "party": "Republican",
+    "url": "https://banks.house.gov",
+    "address": "2418 Rayburn House Office Building Washington DC 20515-1403",
+    "office": "2418 Rayburn House Office Building",
+    "phone": "202-225-4436"
+   },
+   {
+    "type": "sen",
+    "start": "2025-01-03",
+    "end": "2031-01-03",
+    "state": "IN",
+    "class": 1,
+    "state_rank": "junior",
+    "party": "Republican",
+    "url": "https://www.banks.senate.gov",
+    "address": "303 Hart Senate Office Building Washington DC 20510",
+    "office": "303 Hart Senate Office Building",
+    "phone": "202-224-4814"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "O000172",
+   "fec": [
+    "H8NY15148"
+   ],
+   "govtrack": 412804,
+   "wikipedia": "Alexandria Ocasio-Cortez",
+   "wikidata": "Q55223040",
+   "opensecrets": "N00041162",
+   "votesmart": 180416,
+   "ballotpedia": "Alexandria Ocasio-Cortez",
+   "icpsr": 21949,
+   "google_entity_id": "kg:/g/11f6y3nqg6",
+   "pictorial": 13182
+  },
+  "name": {
+   "first": "Alexandria",
+   "last": "Ocasio-Cortez",
+   "official_full": "Alexandria Ocasio-Cortez"
+  },
+  "bio": {
+   "gender": "F",
+   "birthday": "1989-10-13"
+  },
+  "terms": [
+   {
+    "type": "rep",
+    "start": "2019-01-03",
+    "end": "2021-01-03",
+    "state": "NY",
+    "district": 14,
+    "party": "Democrat",
+    "phone": "202-225-3965",
+    "address": "229 Cannon House Office Building Washington DC 20515-3214",
+    "office": "229 Cannon House Office Building",
+    "url": "https://ocasio-cortez.house.gov"
+   },
+   {
+    "type": "rep",
+    "start": "2021-01-03",
+    "end": "2023-01-03",
+    "state": "NY",
+    "district": 14,
+    "party": "Democrat",
+    "url": "https://ocasio-cortez.house.gov",
+    "address": "216 Cannon House Office Building Washington DC 20515-3214",
+    "office": "216 Cannon House Office Building",
+    "phone": "202-225-3965"
+   },
+   {
+    "type": "rep",
+    "start": "2023-01-03",
+    "end": "2025-01-03",
+    "state": "NY",
+    "district": 14,
+    "party": "Democrat",
+    "url": "https://ocasio-cortez.house.gov",
+    "address": "250 Cannon House Office Building Washington DC 20515-3214",
+    "office": "250 Cannon House Office Building",
+    "phone": "202-225-3965"
+   },
+   {
+    "type": "rep",
+    "start": "2025-01-03",
+    "end": "2027-01-03",
+    "state": "NY",
+    "district": 14,
+    "party": "Democrat",
+    "url": "https://ocasio-cortez.house.gov",
+    "address": "250 Cannon House Office Building Washington DC 20515-3214",
+    "office": "250 Cannon House Office Building",
+    "phone": "202-225-3965"
+   }
+  ]
+ },
+ {
+  "id": {
+   "bioguide": "A000382",
+   "lis": "S428",
+   "fec": [
+    "S4MD00327"
+   ],
+   "govtrack": 456965,
+   "opensecrets": "N00053033",
+   "wikipedia": "Angela Alsobrooks",
+   "wikidata": "Q58755148",
+   "votesmart": 212637,
+   "ballotpedia": "Angela Alsobrooks",
+   "google_entity_id": "kg:/g/11fhksj8jt"
+  },
+  "name": {
+   "first": "Angela",
+   "middle": "Deneece",
+   "last": "Alsobrooks",
+   "official_full": "Angela D. Alsobrooks"
+  },
+  "bio": {
+   "gender": "F",
+   "birthday": "1971-02-23"
+  },
+  "terms": [
+   {
+    "type": "sen",
+    "start": "2025-01-03",
+    "end": "2031-01-03",
+    "state": "MD",
+    "class": 1,
+    "state_rank": "junior",
+    "party": "Democrat",
+    "url": "https://www.alsobrooks.senate.gov",
+    "contact_form": "https://alsobrooks.senate.gov/",
+    "address": "374 Russell Senate Office Building Washington DC 20510",
+    "office": "374 Russell Senate Office Building",
+    "phone": "202-224-4524"
+   }
+  ]
+ }
+]

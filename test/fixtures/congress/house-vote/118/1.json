@@ -1,0 +1,35 @@
+{
+ "houseRollCallVotes": [
+  {
+   "congress": 118,
+   "identifier": 11812023296,
+   "legislationNumber": "583",
+   "legislationType": "HRES",
+   "legislationUrl": "https://www.congress.gov/bill/118/house-resolution/583",
+   "result": "Passed",
+   "rollCallNumber": 296,
+   "sessionNumber": 1,
+   "sourceDataURL": "https://clerk.house.gov/evs/2023/roll296.xml",
+   "startDate": "2023-07-13T14:05:00-04:00",
+   "updateDate": "2025-08-01T18:14:53-04:00",
+   "url": "https://api.congress.gov/v3/house-vote/118/1/296",
+   "voteType": "Recorded Vote"
+  },
+  {
+   "amendmentAuthor": "Davidson of Ohio Amendment No. 51",
+   "amendmentNumber": "246",
+   "amendmentType": "HAMDT",
+   "congress": 118,
+   "identifier": 11812023320,
+   "legislationUrl": "https://www.congress.gov/amendment/118/house-amendment/246",
+   "result": "Failed",
+   "rollCallNumber": 320,
+   "sessionNumber": 1,
+   "sourceDataURL": "https://clerk.house.gov/evs/2023/roll320.xml",
+   "startDate": "2023-07-13T23:05:00-04:00",
+   "updateDate": "2025-08-01T18:17:58-04:00",
+   "url": "https://api.congress.gov/v3/house-vote/118/1/320",
+   "voteType": "Recorded Vote"
+  }
+ ]
+}

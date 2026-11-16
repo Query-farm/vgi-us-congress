@@ -1,0 +1,9 @@
+congress,chamber,icpsr,state_icpsr,district_code,state_abbrev,party_code,occupancy,last_means,bioname,bioguide_id,born,died,nominate_dim1,nominate_dim2,nominate_log_likelihood,nominate_geo_mean_probability,nominate_number_of_votes,nominate_number_of_errors,conditional,nokken_poole_dim1,nokken_poole_dim2
+119,President,99912,99,0,USA,200,0,0,"TRUMP, Donald John",,1946.0,,0.403,0.162,,,,,,,
+119,Senate,21702,22,0,IN,200,,,"BANKS, James E.",B001299,1979.0,,0.649,0.021,-14.83512,0.98371,903,6,,0.68,0.209
+119,Senate,41702,4,0,NH,100,,,"HASSAN, Margaret Wood (Maggie)",H001076,1958.0,,-0.225,0.008,-117.01315,0.87808,900,51,,-0.206,-0.013
+119,Senate,41308,12,0,NJ,100,,,"BOOKER, Cory Anthony",B001288,1969.0,,-0.556,-0.251,-85.37752,0.90632,868,35,,-0.494,-0.107
+119,Senate,14858,13,0,NY,100,,,"SCHUMER, Charles Ellis (Chuck)",S000148,1950.0,,-0.355,-0.41,-60.37533,0.93581,910,24,,-0.409,-0.211
+119,Senate,29147,6,0,VT,328,,,"SANDERS, Bernard",S000033,1941.0,,-0.546,-0.429,-28.62526,0.96673,846,9,,-0.704,-0.525
+119,Senate,29940,25,0,WI,100,,,"BALDWIN, Tammy",B001230,1962.0,,-0.484,-0.123,-80.91769,0.91501,911,45,,-0.385,-0.091
+119,Senate,40707,68,0,WY,200,,,"BARRASSO, John A.",B001261,1952.0,,0.54,0.196,-13.3569,0.98543,910,5,,0.648,0.386

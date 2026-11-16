@@ -1,0 +1,2 @@
+congress,chamber,rollnumber,date,session,clerk_rollnumber,majority_requirement,yea_count,nay_count,nominate_mid_1,nominate_mid_2,nominate_spread_1,nominate_spread_2,nominate_log_likelihood,bill_number,vote_result,vote_desc,vote_question,dtl_desc
+119,House,1,2025-01-03,1,2,1/2,218,216,-0.137,0.991,-0.62,-0.705,-5.302,,Johnson (LA),,Election of the Speaker,

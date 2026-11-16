@@ -1,0 +1,20 @@
+{
+ "bills": [
+  {
+   "congress": 117,
+   "introducedDate": "2023-01-09",
+   "latestAction": {
+    "actionDate": "2023-01-09",
+    "text": "Referred to the House Committee on the Judiciary."
+   },
+   "number": "1",
+   "originChamber": "House",
+   "originChamberCode": "H",
+   "title": "Unfiltered listing sentinel",
+   "type": "HR",
+   "updateDate": "2025-05-27",
+   "updateDateIncludingText": "2025-05-27",
+   "url": "https://api.congress.gov/v3/bill/117/hr/1?format=json"
+  }
+ ]
+}

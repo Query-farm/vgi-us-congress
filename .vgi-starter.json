@@ -12,5 +12,8 @@
   "optional_files": [
     ".github/workflows/nightly.yml",
     ".github/dependabot.yml"
-  ]
+  ],
+  "name": "us_congress",
+  "repo": "Query-farm/vgi-us-congress",
+  "initialized": "2026-11-15"
 }

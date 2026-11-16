@@ -1,0 +1,46 @@
+{
+ "members": [
+  {
+   "bioguideId": "F000480",
+   "depiction": {
+    "attribution": "Image courtesy of the Member",
+    "imageUrl": "https://www.congress.gov/img/member/669ff04f5d19788d1f2034aa_200.jpg"
+   },
+   "district": 20,
+   "name": "Fong, Vince",
+   "partyName": "Republican",
+   "state": "California",
+   "terms": {
+    "item": [
+     {
+      "chamber": "House of Representatives",
+      "startYear": 2024
+     }
+    ]
+   },
+   "updateDate": "2026-11-05T08:36:06Z",
+   "url": "https://api.congress.gov/v3/member/F000480?format=json"
+  },
+  {
+   "bioguideId": "M001225",
+   "depiction": {
+    "attribution": "Image courtesy of the Member",
+    "imageUrl": "https://www.congress.gov/img/member/m001225_200.jpg"
+   },
+   "district": 15,
+   "name": "Mullin, Kevin",
+   "partyName": "Democratic",
+   "state": "California",
+   "terms": {
+    "item": [
+     {
+      "chamber": "House of Representatives",
+      "startYear": 2023
+     }
+    ]
+   },
+   "updateDate": "2026-11-05T08:36:06Z",
+   "url": "https://api.congress.gov/v3/member/M001225?format=json"
+  }
+ ]
+}

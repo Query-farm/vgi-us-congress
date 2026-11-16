@@ -1,0 +1,76 @@
+{
+ "actions": [
+  {
+   "actionCode": "E40000",
+   "actionDate": "2024-03-23",
+   "sourceSystem": {
+    "code": 9,
+    "name": "Library of Congress"
+   },
+   "text": "Became Public Law No: 118-47.",
+   "type": "President"
+  },
+  {
+   "actionCode": "36000",
+   "actionDate": "2024-03-23",
+   "sourceSystem": {
+    "code": 9,
+    "name": "Library of Congress"
+   },
+   "text": "Became Public Law No: 118-47.",
+   "type": "BecameLaw"
+  },
+  {
+   "actionCode": "E30000",
+   "actionDate": "2024-03-23",
+   "sourceSystem": {
+    "code": 9,
+    "name": "Library of Congress"
+   },
+   "text": "Signed by President.",
+   "type": "President"
+  },
+  {
+   "actionCode": "36000",
+   "actionDate": "2024-03-23",
+   "sourceSystem": {
+    "code": 9,
+    "name": "Library of Congress"
+   },
+   "text": "Signed by President.",
+   "type": "BecameLaw"
+  },
+  {
+   "actionCode": "E20000",
+   "actionDate": "2024-03-23",
+   "sourceSystem": {
+    "code": 2,
+    "name": "House floor actions"
+   },
+   "text": "Presented to President.",
+   "type": "Floor"
+  },
+  {
+   "actionCode": "H38310",
+   "actionDate": "2024-03-22",
+   "actionTime": "11:20:15",
+   "committees": [],
+   "recordedVotes": [
+    {
+     "chamber": "House",
+     "congress": 118,
+     "date": "2024-03-22T15:20:15Z",
+     "rollNumber": 102,
+     "sessionNumber": 2,
+     "url": "https://clerk.house.gov/evs/2024/roll102.xml"
+    }
+   ],
+   "sourceSystem": {
+    "code": 2,
+    "name": "House floor actions"
+   },
+   "text": "On motion that the House agree to the Senate amendment Agreed to by the Yeas and Nays: 286 - 134 (Roll no. 102).",
+   "type": "Floor"
+  }
+ ]
+}

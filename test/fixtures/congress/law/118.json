@@ -1,0 +1,67 @@
+{
+ "bills": [
+  {
+   "congress": 118,
+   "latestAction": {
+    "actionDate": "2024-09-30",
+    "text": "Became Public Law No: 118-90."
+   },
+   "laws": [
+    {
+     "number": "118-90",
+     "type": "Public Law"
+    }
+   ],
+   "number": "3764",
+   "originChamber": "Senate",
+   "originChamberCode": "S",
+   "title": "United States Commission on International Religious Freedom Reauthorization Act of 2024",
+   "type": "S",
+   "updateDate": "2026-06-04",
+   "updateDateIncludingText": "2026-06-04",
+   "url": "https://api.congress.gov/v3/bill/118/s/3764?format=json"
+  },
+  {
+   "congress": 118,
+   "latestAction": {
+    "actionDate": "2023-03-20",
+    "text": "Became Public Law No: 118-2."
+   },
+   "laws": [
+    {
+     "number": "118-2",
+     "type": "Public Law"
+    }
+   ],
+   "number": "619",
+   "originChamber": "Senate",
+   "originChamberCode": "S",
+   "title": "COVID-19 Origin Act of 2023",
+   "type": "S",
+   "updateDate": "2026-05-12",
+   "updateDateIncludingText": "2026-05-12",
+   "url": "https://api.congress.gov/v3/bill/118/s/619?format=json"
+  },
+  {
+   "congress": 118,
+   "latestAction": {
+    "actionDate": "2023-06-03",
+    "text": "Became Public Law No: 118-4."
+   },
+   "laws": [
+    {
+     "number": "118-4",
+     "type": "Public Law"
+    }
+   ],
+   "number": "346",
+   "originChamber": "House",
+   "originChamberCode": "H",
+   "title": "NOTAM Improvement Act of 2023",
+   "type": "HR",
+   "updateDate": "2026-09-08",
+   "updateDateIncludingText": "2026-09-08",
+   "url": "https://api.congress.gov/v3/bill/118/hr/346?format=json"
+  }
+ ]
+}

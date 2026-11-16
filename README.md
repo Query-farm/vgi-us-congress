@@ -1,314 +1,207 @@
-<!-- managed-by: vgi-starters (edit upstream in shared/README.md.tmpl, then run tools/render.py) -->
 <p align="center">
   <img src="https://query.farm/media-kit/products/vgi/vgi-logo.png" alt="Vector Gateway Interface (VGI)" width="320">
 </p>
 
-<p align="center"><em>A Query.Farm VGI worker for DuckDB, written in Python.</em></p>
+<p align="center"><em>A Query.Farm VGI worker for DuckDB.</em></p>
 
-# VGI Starter Worker — Python
+# Query US Congress Members, Roll-Call Votes, Bills and Laws in DuckDB
 
-[![CI](https://github.com/Query-farm/vgi-starter-python/actions/workflows/ci.yml/badge.svg)](https://github.com/Query-farm/vgi-starter-python/actions/workflows/ci.yml)
+> **vgi-us-congress** · a [Query.Farm](https://query.farm) VGI worker
+
+[![CI](https://github.com/Query-farm/vgi-us-congress/actions/workflows/ci.yml/badge.svg)](https://github.com/Query-farm/vgi-us-congress/actions/workflows/ci.yml)
 [![vgi worker: query.farm](https://query.farm/media-kit/shields/vgi-worker.svg)](https://query.farm)
 
-[VGI](https://query.farm/vgi) lets DuckDB call functions that live in a separate
-process: your code, in any language, exposed as ordinary SQL. This worker adds
-three example functions that you rename and replace with your own:
+Every member of Congress since 1789, every House and Senate roll call, each member's vote,
+DW-NOMINATE ideology scores, and the bills, laws, amendments, committees, nominations and
+treaties on Congress.gov, all as SQL and all joined on **`bioguide_id`**.
 
-| Function | Kind | Shows you how to |
-|---|---|---|
-| `greet(name)` / `greet(name, style)` | scalar | vectorize over a column, overload, constrain a constant |
-| `sequence_table(count, step := 1)` | table | stream rows in batches, take named arguments |
-| `fetch_items(base_url, page_size := 100)` | table | page through a REST API, retry, read a secret |
-
-<!-- template-only:start -->
-## Use this template
-
-This repository is a **template**. Click **Use this template** on GitHub, or:
-
-```bash
-gh repo create my-org/weather-worker --template Query-farm/vgi-starter-python --private --clone
-cd weather-worker
-make init NAME=weather     # renames catalog, package, binary, env vars; removes this section
-make check                 # lint + tests over every transport + metadata score
+```sql
+-- Which senators broke with their party most often in the 118th Congress?
+WITH v AS (
+  SELECT v.bioguide_id, v.rollnumber, v.vote, i.party_name
+  FROM us_congress.main.member_votes(118, chamber := 'senate') v
+  JOIN us_congress.main.member_ideology(118, chamber := 'senate') i USING (bioguide_id)
+  WHERE v.vote IN ('Yea', 'Nay')
+), party AS (
+  SELECT rollnumber, party_name, mode(vote) AS party_vote FROM v GROUP BY ALL
+)
+SELECT m.full_name, v.party_name, round(avg((v.vote <> p.party_vote)::INT) * 100, 1) AS pct_against_party
+FROM v JOIN party p USING (rollnumber, party_name)
+JOIN us_congress.main.members m USING (bioguide_id)
+GROUP BY ALL ORDER BY pct_against_party DESC LIMIT 10;
 ```
 
-Prefer to work with an AI coding agent? `make init` first, then hand it
-[AGENTS.md](AGENTS.md). See [Using with coding agents](#using-with-coding-agents).
+## What's in it
 
-Starters exist for [Python](https://github.com/Query-farm/vgi-starter-python),
-[TypeScript](https://github.com/Query-farm/vgi-starter-typescript),
-[Go](https://github.com/Query-farm/vgi-starter-go),
-[Rust](https://github.com/Query-farm/vgi-starter-rust),
-[Java](https://github.com/Query-farm/vgi-starter-java) and
-[C#](https://github.com/Query-farm/vgi-starter-csharp). They are generated from
-[Query-farm/vgi-starters](https://github.com/Query-farm/vgi-starters); send
-changes there.
-<!-- template-only:end -->
+| Relation | Kind | Source | Key |
+|---|---|---|---|
+| `members` | table | congress-legislators | none |
+| `member_terms` | table | congress-legislators | none |
+| `member_ideology(congress, chamber :=)` / `member_ideology(chamber :=)` | table function | Voteview | none |
+| `rollcalls(congress, chamber :=)` / `rollcalls(chamber :=)` | table function | Voteview | none |
+| `member_votes(congress, chamber :=)` | table function | Voteview | none |
+| `senate_votes(congress, session)` | table function | senate.gov XML | none |
+| `senate_vote_positions(congress, session, vote_number)` | table function | senate.gov XML | none |
+| `vote_cast_label(cast_code)` | scalar | built in | none |
+| `cache_files` | table function | local cache | none |
+| `bills(congress :=, bill_type :=)` | table function | Congress.gov | API key |
+| `bill(congress, bill_type, bill_number)` | table function | Congress.gov | API key |
+| `bill_actions` / `bill_cosponsors` / `bill_subjects` / `bill_summaries` / `bill_text_versions` `(congress, bill_type, bill_number)` | table functions | Congress.gov | API key |
+| `laws(congress, law_type :=)` | table function | Congress.gov | API key |
+| `amendments(congress :=, amendment_type :=)` | table function | Congress.gov | API key |
+| `congress_gov_members(congress :=, state :=, district :=, current_only :=)` | table function | Congress.gov | API key |
+| `sponsored_legislation(bioguide_id)` / `cosponsored_legislation(bioguide_id)` | table functions | Congress.gov | API key |
+| `committees(congress :=, chamber :=)` | table function | Congress.gov | API key |
+| `nominations(congress :=)` | table function | Congress.gov | API key |
+| `treaties(congress :=)` | table function | Congress.gov | API key |
+| `house_votes(congress, session :=)` | table function | Congress.gov (beta, 118th on) | API key |
+| `house_vote_positions(congress, session, roll_call_number)` | table function | Congress.gov (beta) | API key |
+
+Conventions: Congress numbers are integers (118 = 2023–2025). `chamber` is `'house'` or
+`'senate'`. Bill types are lower-case Congress.gov codes (`hr`, `s`, `hjres`, `sjres`,
+`hconres`, `sconres`, `hres`, `sres`); `bill_id` is `hr2882-118`. Dates are `DATE`, instants
+are `TIMESTAMPTZ`, identifiers stay `VARCHAR`.
 
 ## Quick start
 
-**Prerequisites:** Python 3.13+ and [uv](https://docs.astral.sh/uv/) (it runs the SQL
-test runner and the metadata checker).
+**Prerequisites:** Python 3.13+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
+git clone https://github.com/Query-farm/vgi-us-congress && cd vgi-us-congress
 make build
 ```
 
-Then open DuckDB 2.0 or [Haybarn](https://query.farm/products/haybarn) and attach the
-worker. `LOCATION` is the command DuckDB runs to start it; use an absolute path,
-because a relative one resolves against DuckDB's working directory.
-
-**DuckDB 2.0:**
+Attach the worker from **DuckDB 2.0**. `LOCATION` is the command DuckDB runs, so give it an
+absolute path:
 
 ```sql
 SET allow_extension_repositories = 'allowed';
 CREATE EXTENSION REPOSITORY IF NOT EXISTS query_farm WITH PREFIX 'https://duckdb-extensions.query.farm';
 INSTALL vgi FROM query_farm;
 LOAD vgi FROM query_farm;
-ATTACH 'starter' (TYPE vgi, LOCATION '/abs/path/to/vgi-starter-python/.venv/bin/vgi-starter-worker');
+ATTACH 'us_congress' (TYPE vgi, LOCATION '/abs/path/to/vgi-us-congress/.venv/bin/vgi-us-congress-worker');
+
+SELECT latest_party, count(*) FROM us_congress.main.members
+WHERE is_current AND latest_chamber = 'senate' GROUP BY ALL;
 ```
 
-**Haybarn 2.0** (`uvx haybarn-cli`):
+Or attach it from **Haybarn 2.0** (`uvx haybarn-cli`): `INSTALL vgi FROM community; LOAD vgi;`,
+then the same `ATTACH`.
+
+Once a release is tagged you can run it without cloning:
+`LOCATION 'uvx --from git+https://github.com/Query-farm/vgi-us-congress@v0.1.0 vgi-us-congress-worker'`.
+
+## API key
+
+The member, Voteview and Senate relations need no key. The Congress.gov relations need a free
+[api.data.gov key](https://api.congress.gov/sign-up/) in a DuckDB secret:
 
 ```sql
-INSTALL vgi FROM community;
-LOAD vgi;
-ATTACH 'starter' (TYPE vgi, LOCATION '/abs/path/to/vgi-starter-python/.venv/bin/vgi-starter-worker');
+CREATE SECRET (TYPE us_congress, API_KEY 'your-api.data.gov-key');
+SELECT bill_id, title, latest_action_text FROM us_congress.main.bills(congress := 119, bill_type := 'hr') LIMIT 10;
 ```
 
-Now call the functions:
+Without the secret those scans fail with a message naming `TYPE us_congress`; `DESCRIBE` and
+`EXPLAIN` still work. The key is sent in the `X-Api-Key` header, never in a URL, a log line or a
+scan cursor. api.data.gov allows 5,000 requests per hour per key; a list function makes one
+request per 250 rows.
 
-```sql
-SELECT starter.main.greet('Ada');                         -- Hi, Ada!
-SELECT starter.main.greet('Ada', 'formal');               -- Good day, Ada.
-SELECT * FROM starter.main.sequence_table(5, step := 2) ORDER BY n;
-```
+## Pushdown
 
-`fetch_items` pages through a REST API. Try it against the public demo API (25 fixed items):
+* **Congress.gov lists.** `bills`, `amendments` and `nominations` turn `WHERE congress = N`,
+  `WHERE bill_type = 'hr'` / `amendment_type = '...'` into the request path, and ranges on
+  `update_date` into `fromDateTime` / `toDateTime` (widened to whole days; DuckDB re-applies every
+  predicate). The same filters are also named arguments, as are `law_type`, `chamber`, `state`,
+  `district`, `current_only` and `session` on the other list functions. Without a Congress filter
+  `bills()` pages through every bill since 1973, so filter or `LIMIT`.
+* **Voteview.** The `congress` and `chamber` arguments choose which files are downloaded:
+  `member_votes(118, chamber := 'senate')` reads `S118_votes.csv` (a few MB), never the 700 MB
+  `HSall_votes.csv`. `rollcalls()` and `member_ideology()` without a Congress read the
+  whole-history files (30 MB and 6 MB).
+* **senate.gov.** One request per session menu or per vote.
 
-```sql
-SELECT category, count(*) AS items, round(avg(price), 2) AS avg_price
-FROM starter.main.fetch_items('https://vgi-starter-api.query-farm.services/v1')
-GROUP BY category ORDER BY category;
-```
+## Caching
 
-If an older cached extension misbehaves, refresh it with `FORCE INSTALL vgi FROM query_farm;`
-(DuckDB) or `FORCE INSTALL vgi FROM community;` (Haybarn).
+Bulk files (congress-legislators JSON, Voteview CSV, Senate XML) are downloaded on first use,
+never at import or `ATTACH`, into a per-user cache (`~/Library/Caches/vgi-us-congress` on macOS,
+`$XDG_CACHE_HOME/vgi-us-congress` on Linux, `%LOCALAPPDATA%\vgi-us-congress\Cache` on Windows).
+Each download is written atomically, checked against `Content-Length`, and recorded with its
+ETag, Last-Modified and SHA-256. After the TTL a file is revalidated with a conditional GET; if
+the upstream is unreachable the stale copy is used. `cache_files` lists what is cached.
 
-## Using it in a pipeline
-
-Worker functions compose with everything else in DuckDB:
-
-```sql
--- Materialize an API into a local table.
-CREATE TABLE items AS SELECT * FROM starter.main.fetch_items('https://vgi-starter-api.query-farm.services/v1');
-
--- Join it with local files.
-SELECT i.name, i.price, s.units
-FROM items i JOIN 'sales.parquet' s ON s.item_id = i.id;
-
--- Call a scalar per row of another table.
-SELECT customer, starter.main.greet(customer, 'formal') FROM read_csv('customers.csv');
-```
-
-## Project layout
-
-```
-src/starter_worker/
-  worker.py        # assembles the catalog; add new functions to FUNCTIONS
-  meta.py          # catalog/schema metadata + helpers (object_tags, column)
-  greet.py         # scalar example (overloads, ConstParam choices)
-  sequence.py      # table function example (named args, streaming state)
-  fetch_items.py   # REST API table function (pagination, retries, secrets)
-tests/             # pytest unit tests (in-process client)
-test/sql/          # sqllogictest files run through DuckDB
-test/mock_api/     # offline mock of the REST API used by tests
-examples/          # recipes: pushdown, caching, catalog tables, aggregates, COPY …
-ci/                # integration harness used by `make test-sql` and CI
-scripts/           # vgi_template.py (init / template-diff)
-vgi-agent-tests.yaml  # private graders for the agent test tasks
-```
-
-## Adding a function
-
-1. Create `src/starter_worker/<name>.py`. Copy the closest example: `greet.py` for a
-   scalar, `sequence.py` for a generator, `fetch_items.py` for an API.
-2. Declare arguments with `Annotated[..., Param(...)]`/`ConstParam(...)` (scalars) or a
-   frozen dataclass of `Annotated[..., Arg(...)]` (table functions). Use `Arg(0, ...)`
-   for positional arguments and `Arg("name", default=...)` for named ones.
-3. Give the class a `class Meta` with `name`, `description`, `tags=object_tags(...)`
-   and `examples`.
-4. Add the class to `FUNCTIONS` in `src/starter_worker/worker.py`.
-
-**Which kind of function?**
-
-| You want to… | Use |
-|---|---|
-| compute one value per input row | a **scalar** function |
-| return a set of rows from arguments (an API, a file, a generator) | a **table** function |
-| transform or aggregate the rows of a query | a **table in-out** function or an **aggregate** |
-| expose a fixed dataset by name (`SELECT * FROM starter.main.t`) | a **catalog table** |
-| write data out to a file or service | `COPY … TO` with a copy function |
-| accept `INSERT` / `UPDATE` / `DELETE` | a catalog table with insert/update/delete functions |
-
-The [examples/](examples/) folder has a recipe for most of these. Writable tables have no
-recipe:
-
-A writable table is a catalog `Table` that names a table in-out function per operation in
-`insert_function`, `update_function` and `delete_function`, with the richest result each one
-produces in `write_result_modes`. The helpers in `vgi.write_results` (`write_options`,
-`write_result_schema`, `write_result_batch`, `row_id_field`) read DuckDB's `write_options`
-argument and build the result. UPDATE and DELETE need a scan function that emits
-`row_id_field()` and declares projection pushdown. Transactions: override `attach_supports_transactions`
-and `catalog_transaction_begin` / `_commit` / `_rollback` on the catalog. Since VGI protocol 3.3
-a table's scan and write functions are table-only: hidden from `duckdb_functions()` and not
-callable from SQL. Set `expose_scan=True` on the table to keep the scan callable as an ordinary
-table function too (write functions never are). See
-[Writable tables](https://github.com/Query-farm/vgi-python/blob/main/docs/catalog-interface.md#writable-tables)
-in the vgi-python docs.
-
-## Secrets and configuration
-
-`fetch_items` shows the recommended pattern. A bearer token comes from a DuckDB secret
-when one exists, and from an environment variable otherwise:
-
-```sql
-CREATE SECRET (TYPE starter_api, TOKEN 'your-token');      -- per session, never logged
-```
-
-```bash
-STARTER_API_TOKEN=your-token make run-http                # for servers and containers
-```
-
-Try it: the demo API's `/v1/auth` endpoint needs the published token `demo-token`.
-
-```sql
-SELECT count(*) FROM starter.main.fetch_items('https://vgi-starter-api.query-farm.services/v1/auth');   -- fails: HTTP 401
-CREATE SECRET (TYPE starter_api, TOKEN 'demo-token');
-SELECT count(*) FROM starter.main.fetch_items('https://vgi-starter-api.query-farm.services/v1/auth');   -- 25
-```
-
-Never bake credentials into the image or the source. If a function can't run without
-real credentials, its examples can't execute in CI either. Set `execute: false` on the
-metadata check for that worker (see `.github/workflows/ci.yml`), and add
-`LINT_ARGS ?= --no-execute` to the Makefile so local runs match.
-
-## Testing
-
-```bash
-make test-unit                 # fast Python unit tests
-make test-sql                  # test/sql/*.test through DuckDB (stdio)
-make test-sql TRANSPORT=http   # …over HTTP (also: launch)
-make check                     # everything CI runs
-```
-
-`test/sql/*.test` files are [sqllogictest](https://duckdb.org/docs/stable/dev/sqllogictest/intro)
-scripts. `ci/run-integration.sh` runs them against your worker and fails on any
-unexpected skip, so a broken transport can't hide behind a green run.
-`fetch_items` is tested against `test/mock_api/server.py` so tests are fast and
-offline.
-
-**Testing against real data:** put live tests in their own `.test` file that starts with
-`require-env STARTER_LIVE`. They run only when that variable is set. Add the skip reason
-to `EXPECTED_SKIP_REASONS` in CI.
-
-## Metadata and the quality score
-
-DuckDB, agents and documentation tools discover your functions through their metadata:
-titles, descriptions, argument docs, examples and keywords.
-[vgi-lint](https://github.com/Query-farm/vgi-lint-check) checks it, and CI runs it on
-every push. Its settings live in `vgi-lint.toml`, which `make lint-explain`,
-`vgi-lint lint`, and CI all read. This template scores 100/100 with no findings.
-
-```bash
-make lint-explain                              # findings, each with its fix
-make lint-explain LINT_ARGS="--format agent"   # the same, grouped for coding agents
-make lint-ai                                   # optional: an agent must solve vgi-agent-tests.yaml
-```
-
-Each report also states an **assurance level**: how much was actually verified.
-
-| Level | Reached when | Here |
+| ATTACH option | Default | Purpose |
 |---|---|---|
-| L1 structural | the static metadata is clean | workers that need real credentials (`execute: false` in CI) |
-| L2 behavioural | the examples also run and return what they claim | **the CI gate** |
-| L3 semantic | an agent solves the worker's own test tasks, and the docs are reviewed | `make lint-ai`, before publishing |
+| `cache_dir` | per-user cache dir | where downloads go |
+| `cache_ttl_hours` | 24 | hours before a cached file is revalidated (Senate vote files: 30 days) |
+| `congress_gov_url` | `https://api.congress.gov/v3` | Congress.gov API root |
+| `legislators_url` | `https://unitedstates.github.io/congress-legislators` | congress-legislators root |
+| `voteview_url` | `https://voteview.com/static/data/out` | Voteview data root |
+| `senate_url` | `https://www.senate.gov/legislative/LIS` | Senate roll-call XML root |
 
-- **How strict.** Your copy fails on warnings (`fail_on = "warning"` in `vgi-lint.toml`).
-  Raise it to `"info"` before you publish the worker for others.
-- **The linter isn't pinned.** It tracks the current quality bar, so a new rule can flag
-  metadata that passed yesterday. Fix it, or waive the finding.
-- **Waivers.** If a finding is genuinely wrong for your worker, waive it in
-  `vgi-lint.toml` with a `kind` and a `reason`.
-- **Existing workers.** If you're adding this gate to a worker that already has
-  findings, record them with `vgi-lint lint --baseline vgi-lint-baseline --update-baseline`
-  and set `baseline` in `vgi-lint.toml`. After that, only new findings fail.
+The URL options exist so tests (and mirrors) can point the worker elsewhere; the test suite
+points them at `test/mock_api/server.py`.
 
-Metadata lives in `src/starter_worker/meta.py` and each function's `class Meta`.
-
-## Logging and debugging
-
-stdout carries the Arrow protocol, so **never print to stdout**. Log to stderr instead.
-Use the standard `logging` module (the SDK routes it to stderr); `--debug` or `--log-level DEBUG` turns it up.
-
-- Under DuckDB (stdio/launch), worker stderr shows up in DuckDB's error messages and
-  terminal.
-- In Docker it goes to `docker logs`.
-- `make debug` runs one query against the worker with debug logging on.
-
-## Deploying
-
-The same binary serves stdio (DuckDB starts it locally) or HTTP (you host it):
-
-```bash
-docker build -t weather-worker .
-docker run -p 8000:8000 -e STARTER_API_TOKEN=... weather-worker   # health: GET /health
-```
+## Examples
 
 ```sql
-ATTACH 'starter' (TYPE vgi, LOCATION 'https://workers.example.com/starter');
+-- Who represented a state on a given day?
+SELECT t.bioguide_id, m.full_name, t.party FROM us_congress.main.member_terms t
+JOIN us_congress.main.members m USING (bioguide_id)
+WHERE t.chamber = 'senate' AND t.state = 'CA' AND DATE '2000-01-01' BETWEEN t.start_date AND t.end_date;
+
+-- Polarization: the gap between the parties' Senate medians, by Congress.
+SELECT congress, round(median(nominate_dim1) FILTER (WHERE party_code = 200)
+                     - median(nominate_dim1) FILTER (WHERE party_code = 100), 3) AS gap
+FROM us_congress.main.member_ideology(chamber := 'senate') WHERE congress >= 90 GROUP BY congress ORDER BY congress;
+
+-- Today's Senate votes and how each senator voted on the latest one.
+SELECT * FROM us_congress.main.senate_votes(119, 2) ORDER BY vote_number DESC LIMIT 5;
+SELECT party, vote_cast, count(*) FROM us_congress.main.senate_vote_positions(119, 2, 1) GROUP BY ALL;
+
+-- A bill's sponsor and its recorded votes (needs the secret).
+SELECT title, sponsor_bioguide_id, became_law FROM us_congress.main.bill(118, 'hr', 2882);
+SELECT action_date, action_text FROM us_congress.main.bill_actions(118, 'hr', 2882) WHERE vote_roll_number IS NOT NULL;
 ```
 
-Put hosted workers behind TLS and authentication. See
-[authentication](https://query.farm/vgi/authentication) for bearer tokens and JWTs, and
-[distributing a worker](https://query.farm/vgi/distributing-a-worker) for packaging.
-Pass secrets with `-e` or your platform's secret manager.
+## Data sources and terms
 
-## Releasing
+The code is BSD Zero Clause licensed; the data it reads is not part of that licence and each
+upstream's terms apply. Nothing is bundled in the package: every dataset is fetched at runtime.
+See [DATA-SOURCES.md](DATA-SOURCES.md) for URLs, licences and the small test fixtures.
 
-Push a tag like `v0.1.0`. The release workflow builds the wheel and sdist, attaches them to the GitHub release, and (if you set the repository variable `PYPI_PUBLISH=true` and configure PyPI Trusted Publishing) publishes to PyPI, so users can run `uvx vgi-starter-worker`. Without PyPI, users install straight from the repo with `uvx --from git+https://github.com/Query-farm/vgi-starter-python@v0.1.0 vgi-starter-worker`. Every artifact is signed with cosign and
-carries SLSA build provenance. `ci/check-version.sh` makes sure the tag matches the
-version in `pyproject.toml`.
+* **[unitedstates/congress-legislators](https://github.com/unitedstates/congress-legislators)**:
+  CC0 1.0 public-domain dedication.
+* **[Voteview](https://voteview.com/data)**: free to use with citation. Please cite: Lewis,
+  Jeffrey B., Keith Poole, Howard Rosenthal, Adam Boche, Aaron Rudkin, and Luke Sonnet (2026).
+  *Voteview: Congressional Roll-Call Votes Database*. https://voteview.com/
+* **[Senate roll-call votes](https://www.senate.gov/legislative/votes_new.htm)** and the
+  **[Congress.gov API](https://github.com/LibraryOfCongress/api.congress.gov)**: works of the US
+  government, public domain. Congress.gov requires an api.data.gov key and its rate limits.
 
-## Using with coding agents
+House votes from Congress.gov are a **beta** endpoint covering legislation-related votes from the
+118th Congress on; for older or procedural House votes use Voteview's `rollcalls`/`member_votes`.
 
-[AGENTS.md](AGENTS.md) is written for AI coding agents (Claude Code reads it via
-`CLAUDE.md`; Codex, Cursor and others read it directly). It covers the commands, the
-recipe for adding a function, the metadata checklist and the sharp edges. A good first
-prompt:
+## Development
 
-> Read AGENTS.md. Replace `fetch_items` with `forecast(lat DOUBLE, lon DOUBLE)` that calls
-> the Open-Meteo API. Include full metadata, a mock-server test and a `STARTER_LIVE` test.
-> You're done when `make check` passes.
+```bash
+make check        # ruff, mypy, pydoclint, pytest, SQL tests over stdio/launch/http, vgi-lint
+make test-unit    # pytest only
+make test-sql     # SQL tests through Haybarn (TRANSPORT=stdio|launch|http)
+make lint-explain # metadata quality report
+make live-check   # opt-in: a few keyless queries against the real upstreams
+```
 
-## Keeping up with the template
-
-`make template-diff` shows what changed upstream (CI, docs, examples) since your copy was
-made. Your copy records its template version in `.vgi-starter.json`.
-
-## Learn more
-
-- [What is VGI?](https://query.farm/vgi) · [Getting started](https://query.farm/vgi/getting-started) · [Building a worker](https://query.farm/vgi/building-a-worker)
-- [Python SDK docs](https://query.farm/vgi/docs/python/): [scalar tutorial](https://query.farm/vgi/docs/python/tutorial/scalar/), [table tutorial](https://query.farm/vgi/docs/python/tutorial/table/)
-- [Distributing a worker](https://query.farm/vgi/distributing-a-worker) · [Choosing a language](https://query.farm/vgi/languages) · [llms.txt](https://query.farm/vgi/llms.txt)
-- SDK source: [vgi-python](https://github.com/Query-farm/vgi-python) · RPC layer: [https://vgi-rpc-python.query.farm](https://vgi-rpc-python.query.farm)
+Every test runs offline: `test/mock_api/server.py` serves trimmed real responses from
+`test/fixtures` for all four upstreams, rate-limits each URL once to exercise retries, and pages
+Congress.gov lists two items at a time to exercise the cursor.
 
 ## Support
 
-Open an issue on this repository. For VGI itself, see [query.farm](https://query.farm).
+Open an issue at https://github.com/Query-farm/vgi-us-congress/issues.
 
-## Authorship & license
+## Authorship & License
 
-The starter template is written by [Query.Farm](https://query.farm) and released under
-the [BSD Zero Clause License](LICENSE) (0BSD). Use it for anything, with no attribution
-required. Replace this section with your own license once the code is yours.
+Written by [Query.Farm](https://query.farm). Released under the BSD Zero Clause License
+(see [LICENSE](LICENSE)).
+
+Copyright 2026 Query Farm LLC - https://query.farm

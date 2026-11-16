@@ -1,0 +1,52 @@
+{
+ "bills": [
+  {
+   "congress": 118,
+   "introducedDate": "2023-01-09",
+   "latestAction": {
+    "actionDate": "2023-01-09",
+    "text": "Referred to the House Committee on the Judiciary."
+   },
+   "number": "27",
+   "originChamber": "House",
+   "originChamberCode": "H",
+   "title": "Prosecutors Need to Prosecute Act",
+   "type": "HR",
+   "updateDate": "2025-05-27",
+   "updateDateIncludingText": "2025-05-27",
+   "url": "https://api.congress.gov/v3/bill/118/hr/27?format=json"
+  },
+  {
+   "congress": 118,
+   "introducedDate": "2023-01-09",
+   "latestAction": {
+    "actionDate": "2023-02-08",
+    "text": "Referred to the Subcommittee on Border Security and Enforcement."
+   },
+   "number": "29",
+   "originChamber": "House",
+   "originChamberCode": "H",
+   "title": "Border Safety and Security Act of 2023",
+   "type": "HR",
+   "updateDate": "2025-05-27",
+   "updateDateIncludingText": "2025-05-27",
+   "url": "https://api.congress.gov/v3/bill/118/hr/29?format=json"
+  },
+  {
+   "congress": 118,
+   "introducedDate": "2023-01-09",
+   "latestAction": {
+    "actionDate": "2024-12-17",
+    "text": "Referred to the Subcommittee on Health."
+   },
+   "number": "33",
+   "originChamber": "House",
+   "originChamberCode": "H",
+   "title": "Medicare Dental, Vision, and Hearing Benefit Act of 2023",
+   "type": "HR",
+   "updateDate": "2024-12-21",
+   "updateDateIncludingText": "2024-12-21",
+   "url": "https://api.congress.gov/v3/bill/118/hr/33?format=json"
+  }
+ ]
+}

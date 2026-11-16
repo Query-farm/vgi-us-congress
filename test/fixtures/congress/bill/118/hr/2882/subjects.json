@@ -1,0 +1,26 @@
+{
+ "subjects": {
+  "legislativeSubjects": [
+   {
+    "name": "ASEAN countries",
+    "updateDate": "2024-04-02T13:33:56Z"
+   },
+   {
+    "name": "Abortion",
+    "updateDate": "2024-04-02T13:25:24Z"
+   },
+   {
+    "name": "Accounting and auditing",
+    "updateDate": "2024-04-02T13:25:30Z"
+   },
+   {
+    "name": "Administrative Conference of the U.S.",
+    "updateDate": "2024-04-02T13:27:50Z"
+   }
+  ],
+  "policyArea": {
+   "name": "Economics and Public Finance",
+   "updateDate": "2024-03-26T13:15:19Z"
+  }
+ }
+}

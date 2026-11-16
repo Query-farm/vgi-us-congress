@@ -1,0 +1,8 @@
+congress,chamber,icpsr,state_icpsr,district_code,state_abbrev,party_code,occupancy,last_means,bioname,bioguide_id,born,died,nominate_dim1,nominate_dim2,nominate_log_likelihood,nominate_geo_mean_probability,nominate_number_of_votes,nominate_number_of_errors,conditional,nokken_poole_dim1,nokken_poole_dim2
+118,President,99913,99,0,USA,100,0,0,"BIDEN, Joseph Robinette (Joe), Jr.",B000444,1942,,-0.32,0.283,,,,,,,
+118,House,15448,71,11,CA,100,,,"PELOSI, Nancy",P000197,1940,,-0.489,-0.174,-44.37169,0.95723,1015,17,,-0.552,0.236
+118,House,14854,51,5,KY,200,,,"ROGERS, Harold Dallas (Hal)",R000395,1937,,0.334,0.157,-123.10459,0.89084,1065,37,,0.359,0.781
+118,House,14873,52,5,MD,100,,,"HOYER, Steny Hamilton",H000874,1939,,-0.381,0.125,-60.17657,0.9443,1050,19,,-0.489,0.377
+118,House,15433,52,7,MD,100,,,"MFUME, Kweisi",M000687,1948,,-0.441,-0.317,-52.33744,0.95287,1084,17,,-0.417,-0.146
+118,House,14863,12,4,NJ,200,,,"SMITH, Christopher Henry",S000522,1953,,0.184,-0.169,-265.08584,0.78481,1094,126,,0.302,-0.047
+118,House,15029,24,9,OH,100,,,"KAPTUR, Marcia Carolyn (Marcy)",K000009,1946,,-0.34,0.14,-139.00163,0.88068,1094,61,,-0.292,0.341

@@ -1,0 +1,29 @@
+{
+ "treaties": [
+  {
+   "congressConsidered": 117,
+   "congressReceived": 117,
+   "number": 3,
+   "parts": {},
+   "suffix": "",
+   "topic": "International Law and Organization",
+   "transmittedDate": "2022-07-11T00:00:00Z",
+   "updateDate": "2022-08-04T02:46:11Z",
+   "url": "https://api.congress.gov/v3/treaty/117/3?format=json"
+  },
+  {
+   "congressConsidered": null,
+   "congressReceived": 117,
+   "number": 1,
+   "parts": {
+    "count": 2,
+    "urls": []
+   },
+   "suffix": "",
+   "topic": "Maritime Boundaries and Claims",
+   "transmittedDate": "2022-01-20T00:00:00Z",
+   "updateDate": "2022-02-01T02:46:11Z",
+   "url": "https://api.congress.gov/v3/treaty/117/1?format=json"
+  }
+ ]
+}
