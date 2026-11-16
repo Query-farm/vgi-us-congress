@@ -89,7 +89,7 @@ Or attach it from **Haybarn 2.0** (`uvx haybarn-cli`): `INSTALL vgi FROM communi
 then the same `ATTACH`.
 
 Once a release is tagged you can run it without cloning:
-`LOCATION 'uvx --from git+https://github.com/Query-farm/vgi-us-congress@v0.1.0 vgi-us-congress-worker'`.
+`LOCATION 'uvx --from git+https://github.com/Query-farm/vgi-us-congress@v0.1.1 vgi-us-congress-worker'`.
 
 ## API key
 

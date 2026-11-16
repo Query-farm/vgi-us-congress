@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 (2026-11-16)
+
+- Requires Python 3.14 (CI, Docker image and tooling moved to 3.14).
+
 ## 0.1.0 (unreleased)
 
 First release: members and terms since 1789 (congress-legislators), Voteview roll calls, member

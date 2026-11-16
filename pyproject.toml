@@ -1,6 +1,6 @@
 [project]
 name = "vgi-us-congress-worker"
-version = "0.1.0"
+version = "0.1.1"
 description = "US Congress members, roll-call votes, bills and laws as DuckDB SQL: a Query.Farm VGI worker."
 readme = "README.md"
 license = "0BSD"
